@@ -1,0 +1,8 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+Options -MultiViews
+RewriteRule ^scripts - [L] 
+RewriteRule ^news/(.*)/(.*)/(.*)\.html$ news.php?name=$1&cat=$2
+RewriteRule ^profile/(.*)$ profile.php?id=$1
+RewriteRule ^category/(.*)/(.*)\.html$ categories.php?id=$1   
+</IfModule>
