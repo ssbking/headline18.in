@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.32, created on 2020-08-19 10:00:27
+/* Smarty version 3.1.32, created on 2020-08-19 19:03:03
   from 'C:\wamp64\www\headline18.in\themes\classic\maindir.php' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5f3cf83be4d620_91705805',
+  'unifunc' => 'content_5f3d776786d816_80963484',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f3cf83be4d620_91705805 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f3d776786d816_80963484 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\wamp64\\www\\headline18.in\\libs\\plugins\\modifier.replace.php','function'=>'smarty_modifier_replace',),));
 ?><nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 <div class="container">
