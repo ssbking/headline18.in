@@ -9,33 +9,33 @@
 class SecureSession
 {
     // Include browser name in fingerprint?
-    var $check_browser = true;
+    public $check_browser = true;
 
     // How many numbers from IP use in fingerprint?
-    var $check_ip_blocks = 0;
+    public $check_ip_blocks = 0;
 
     // Control word - any word you want.
-    var $secure_word = 'SECURESTAFF';
+    public $secure_word = 'SECURESTAFF';
 
     // Regenerate session ID to prevent fixation attacks?
-    var $regenerate_id = true;
+    public $regenerate_id = true;
 
     // Call this when init session.
-    function Open()
+    public function Open()
     {
         $_SESSION['ss_fprint'] = $this->_Fingerprint();
         $this->_RegenerateId();
     }
 
     // Call this to check session.
-    function Check()
+    public function Check()
     {
         $this->_RegenerateId();
         return (isset($_SESSION['ss_fprint']) && $_SESSION['ss_fprint'] == $this->_Fingerprint());
     }
 
     // Internal function. Returns MD5 from fingerprint.
-    function _Fingerprint()
+    public function _Fingerprint()
     {
         $fingerprint = $this->secure_word;
         if ($this->check_browser) {
@@ -55,7 +55,7 @@ class SecureSession
     }
 
     // Internal function. Regenerates session ID if possible.
-    function _RegenerateId()
+    public function _RegenerateId()
     {
         if ($this->regenerate_id && function_exists('session_regenerate_id')) {
             if (version_compare(phpversion(), '5.1.0', '>=')) {
@@ -66,5 +66,3 @@ class SecureSession
         }
     }
 }
-
-?>

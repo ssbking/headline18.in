@@ -6,7 +6,6 @@
  */
 class HTMLPurifier_UnitConverter
 {
-
     const ENGLISH = 1;
     const METRIC = 2;
     const DIGITAL = 3;
@@ -163,7 +162,6 @@ class HTMLPurifier_UnitConverter
             $state = $dest_state;
 
             // One more loop around to convert the unit in the new system.
-
         }
 
         // Post-condition: $unit == $to_unit

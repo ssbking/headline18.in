@@ -82,9 +82,11 @@ abstract class Smarty_Resource
             if (class_exists($_resource_class, false)) {
                 return $smarty->_cache[ 'resource_handlers' ][ $type ] = new $_resource_class();
             } else {
-                $smarty->registerResource($type,
-                                          array("smarty_resource_{$type}_source", "smarty_resource_{$type}_timestamp",
-                                                "smarty_resource_{$type}_secure", "smarty_resource_{$type}_trusted"));
+                $smarty->registerResource(
+                    $type,
+                    array("smarty_resource_{$type}_source", "smarty_resource_{$type}_timestamp",
+                                                "smarty_resource_{$type}_secure", "smarty_resource_{$type}_trusted")
+                );
                 // give it another try, now that the resource is registered properly
                 return self::load($smarty, $type);
             }
@@ -163,9 +165,11 @@ abstract class Smarty_Resource
      * @return \Smarty_Template_Source Source Object
      * @throws \SmartyException
      */
-    public static function source(Smarty_Internal_Template $_template = null,
-                                  Smarty $smarty = null,
-                                  $template_resource = null)
+    public static function source(
+        Smarty_Internal_Template $_template = null,
+        Smarty $smarty = null,
+        $template_resource = null
+    )
     {
         return Smarty_Template_Source::load($_template, $smarty, $template_resource);
     }
@@ -249,4 +253,3 @@ abstract class Smarty_Resource
         return true;
     }
 }
-

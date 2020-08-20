@@ -185,8 +185,7 @@ class Smarty_Internal_Config
         // call compiler
         try {
             $this->compiler_object->compileSource($this);
-        }
-        catch (Exception $e) {
+        } catch (Exception $e) {
             // restore old timestamp in case of error
             if ($this->smarty->compile_locking && $saved_timestamp) {
                 touch($this->getCompiledFilepath(), $saved_timestamp);

@@ -23,10 +23,10 @@
     </table>
 	<?php
 require_once('../admin/config.php');
-include ('../classes/adodb/adodb.inc.php');
+include('../classes/adodb/adodb.inc.php');
 $dbdriver = "mysqli";
 $conn = ADONewConnection($dbdriver);
-$conn->Connect($server,$user,$password,$database);
+$conn->Connect($server, $user, $password, $database);
 
 $sql = "CREATE TABLE IF NOT EXISTS `abcoption` (
   `optionid` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -188,61 +188,53 @@ $sql8 = "CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1";
 $result = $conn->Execute($sql);
 if ($result == false) {
-	print 'error'  . $conn->ErrorMsg() . '<br>';
-}
-else {
-	echo '';
+    print 'error'  . $conn->ErrorMsg() . '<br>';
+} else {
+    echo '';
 }
 $result2 = $conn->Execute($sql2);
 if ($result2 == false) {
-	print 'error'  . $conn->ErrorMsg() . '<br>';
-}
-else {
-	echo '';
+    print 'error'  . $conn->ErrorMsg() . '<br>';
+} else {
+    echo '';
 }
 $result3 = $conn->Execute($sql3);
 if ($result3 == false) {
-	print 'error'  . $conn->ErrorMsg() . '<br>';
-}
-else {
-	echo '';
+    print 'error'  . $conn->ErrorMsg() . '<br>';
+} else {
+    echo '';
 }
 $result4= $conn->Execute($sql4);
 
 if ($result4 == false) {
-	print 'error'  . $conn->ErrorMsg() . '<br>';
-}
-else {
-	echo '';
+    print 'error'  . $conn->ErrorMsg() . '<br>';
+} else {
+    echo '';
 }
 $result5 = $conn->Execute($sql5);
 
 if ($result5 == false) {
-	print 'error'  . $conn->ErrorMsg() . '<br>';
-}
-else {
-	echo '';
+    print 'error'  . $conn->ErrorMsg() . '<br>';
+} else {
+    echo '';
 }
 $result6 = $conn->Execute($sql6);
 if ($result6 == false) {
-	print 'error'  . $conn->ErrorMsg() . '<br>';
-}
-else {
-	echo '';
+    print 'error'  . $conn->ErrorMsg() . '<br>';
+} else {
+    echo '';
 }
 $result7 = $conn->Execute($sql7);
 if ($result7 == false) {
-	print 'error'  . $conn->ErrorMsg() . '<br>';
-}
-else {
-	echo '';
+    print 'error'  . $conn->ErrorMsg() . '<br>';
+} else {
+    echo '';
 }
 $result8 = $conn->Execute($sql8);
 if ($result8 == false) {
-	print 'error'  . $conn->ErrorMsg() . '<br>';
-}
-else {
-	echo '';
+    print 'error'  . $conn->ErrorMsg() . '<br>';
+} else {
+    echo '';
 }
 ?>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Database tables successfully created. <a href="install3.php"><b>Step 4</b></a>

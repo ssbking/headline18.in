@@ -5,7 +5,7 @@
  *  (c) 2011 Predrag Rukavina - admin[at]phpenter[dot]net
  *  All rights reserved
  *
- *  This script is part of the PHP Enter project. 
+ *  This script is part of the PHP Enter project.
  *  The PHP Enter project is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU General Public License
  *  as published by the Free Software Foundation; either version 2
@@ -23,14 +23,15 @@
  *
  *  This copyright notice MUST appear in all copies of the script!
  * ********************************************************************** */
-include ('settings.php');
+include('settings.php');
 $ac = $conn->Execute('SELECT * FROM newser WHERE main <> '.$conn->qstr('4').' ORDER by newsid DESC LIMIT 20');
-if(!$ac)
- print $conn->ErrorMsg();
-else
- while(!$ac->EOF) {
-  $newser[] = $ac->fields;
-  $ac->MoveNext();
+if (!$ac) {
+    print $conn->ErrorMsg();
+} else {
+    while (!$ac->EOF) {
+        $newser[] = $ac->fields;
+        $ac->MoveNext();
+    }
 }
 $smarty->caching = 1;
 $smarty->assign('newser', @$newser);
@@ -39,4 +40,3 @@ $conn->Close();
 ######################################
 ##rss.php                       BETA##
 ######################################
-?>

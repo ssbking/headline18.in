@@ -26,12 +26,15 @@
  */
 
 
-class SmartyPaginate {
+class SmartyPaginate
+{
 
     /**
      * Class Constructor
      */
-     function __construct() { }
+    public function __construct()
+    {
+    }
 
     /**
      * initialize the session data
@@ -39,8 +42,9 @@ class SmartyPaginate {
      * @param string $id the pagination id
      * @param string $formvar the variable containing submitted pagination information
      */
-    public static function connect($id = 'default', $formvar = null) {
-        if(!isset($_SESSION['SmartyPaginate'][$id])) {
+    public static function connect($id = 'default', $formvar = null)
+    {
+        if (!isset($_SESSION['SmartyPaginate'][$id])) {
             SmartyPaginate::reset($id);
         }
         
@@ -49,8 +53,9 @@ class SmartyPaginate {
         
         // set the current page
         $_total = SmartyPaginate::getTotal($id);
-        if(isset($_formvar[SmartyPaginate::getUrlVar($id)]) && $_formvar[SmartyPaginate::getUrlVar($id)] > 0 && (!isset($_total) || $_formvar[SmartyPaginate::getUrlVar($id)] <= $_total))
+        if (isset($_formvar[SmartyPaginate::getUrlVar($id)]) && $_formvar[SmartyPaginate::getUrlVar($id)] > 0 && (!isset($_total) || $_formvar[SmartyPaginate::getUrlVar($id)] <= $_total)) {
             $_SESSION['SmartyPaginate'][$id]['current_item'] = $_formvar[$_SESSION['SmartyPaginate'][$id]['urlvar']];
+        }
     }
 
     /**
@@ -58,16 +63,18 @@ class SmartyPaginate {
      *
      * @param string $id the pagination id
      */
-    public static function isConnected($id = 'default') {
+    public static function isConnected($id = 'default')
+    {
         return isset($_SESSION['SmartyPaginate'][$id]);
-    }    
+    }
         
     /**
      * reset/init the session data
      *
      * @param string $id the pagination id
      */
-    public static function reset($id = 'default') {
+    public static function reset($id = 'default')
+    {
         $_SESSION['SmartyPaginate'][$id] = array(
             'item_limit' => 10,
             'item_total' => null,
@@ -86,11 +93,13 @@ class SmartyPaginate {
      *
      * @param string $id the pagination id
      */
-    public static function disconnect($id = null) {
-        if(isset($id))
+    public static function disconnect($id = null)
+    {
+        if (isset($id)) {
             unset($_SESSION['SmartyPaginate'][$id]);
-        else
+        } else {
             unset($_SESSION['SmartyPaginate']);
+        }
     }
 
     /**
@@ -98,27 +107,29 @@ class SmartyPaginate {
      *
      * @param string $id the pagination id
      */
-    public static function setLimit($limit, $id = 'default') {
-        if(!preg_match('!^\d+$!', $limit)) {
+    public static function setLimit($limit, $id = 'default')
+    {
+        if (!preg_match('!^\d+$!', $limit)) {
             trigger_error('SmartyPaginate setLimit: limit must be an integer.');
             return false;
         }
         settype($limit, 'integer');
-        if($limit < 1) {
+        if ($limit < 1) {
             trigger_error('SmartyPaginate setLimit: limit must be greater than zero.');
             return false;
         }
         $_SESSION['SmartyPaginate'][$id]['item_limit'] = $limit;
-    }    
+    }
 
     /**
      * get maximum number of items per page
      *
      * @param string $id the pagination id
      */
-    public static function getLimit($id = 'default') {
+    public static function getLimit($id = 'default')
+    {
         return $_SESSION['SmartyPaginate'][$id]['item_limit'];
-    }    
+    }
             
     /**
      * set the total number of items
@@ -126,13 +137,14 @@ class SmartyPaginate {
      * @param int $total the total number of items
      * @param string $id the pagination id
      */
-    public static function setTotal($total, $id = 'default') {
-        if(!preg_match('!^\d+$!', $total)) {
+    public static function setTotal($total, $id = 'default')
+    {
+        if (!preg_match('!^\d+$!', $total)) {
             trigger_error('SmartyPaginate setTotal: total must be an integer.');
             return false;
         }
         settype($total, 'integer');
-        if($total < 0) {
+        if ($total < 0) {
             trigger_error('SmartyPaginate setTotal: total must be positive.');
             return false;
         }
@@ -144,9 +156,10 @@ class SmartyPaginate {
      *
      * @param string $id the pagination id
      */
-    public static function getTotal($id = 'default') {
+    public static function getTotal($id = 'default')
+    {
         return $_SESSION['SmartyPaginate'][$id]['item_total'];
-    }    
+    }
 
     /**
      * set the url used in the links, default is $PHP_SELF
@@ -154,7 +167,8 @@ class SmartyPaginate {
      * @param string $url the pagination url
      * @param string $id the pagination id
      */
-    public static function setUrl($url, $id = 'default') {
+    public static function setUrl($url, $id = 'default')
+    {
         $_SESSION['SmartyPaginate'][$id]['url'] = $url;
     }
 
@@ -163,9 +177,10 @@ class SmartyPaginate {
      *
      * @param string $id the pagination id
      */
-    public static function getUrl($id = 'default') {
+    public static function getUrl($id = 'default')
+    {
         return $_SESSION['SmartyPaginate'][$id]['url'];
-    }    
+    }
     
     /**
      * set the url variable ie. ?next=10
@@ -173,7 +188,8 @@ class SmartyPaginate {
      * @param string $url url pagination varname
      * @param string $id the pagination id
      */
-    public static function setUrlVar($urlvar, $id = 'default') {
+    public static function setUrlVar($urlvar, $id = 'default')
+    {
         $_SESSION['SmartyPaginate'][$id]['urlvar'] = $urlvar;
     }
 
@@ -182,9 +198,10 @@ class SmartyPaginate {
      *
      * @param string $id the pagination id
      */
-    public static function getUrlVar($id = 'default') {
+    public static function getUrlVar($id = 'default')
+    {
         return $_SESSION['SmartyPaginate'][$id]['urlvar'];
-    }    
+    }
         
     /**
      * set the current item (usually done automatically by next/prev links)
@@ -192,7 +209,8 @@ class SmartyPaginate {
      * @param int $item index of the current item
      * @param string $id the pagination id
      */
-    public static function setCurrentItem($item, $id = 'default') {
+    public static function setCurrentItem($item, $id = 'default')
+    {
         $_SESSION['SmartyPaginate'][$id]['current_item'] = $item;
     }
 
@@ -201,30 +219,33 @@ class SmartyPaginate {
      *
      * @param string $id the pagination id
      */
-    public static function getCurrentItem($id = 'default') {
+    public static function getCurrentItem($id = 'default')
+    {
         return $_SESSION['SmartyPaginate'][$id]['current_item'];
-    }    
+    }
 
     /**
      * get the current item index
      *
      * @param string $id the pagination id
      */
-    public static function getCurrentIndex($id = 'default') {
+    public static function getCurrentIndex($id = 'default')
+    {
         return $_SESSION['SmartyPaginate'][$id]['current_item'] - 1;
-    }    
+    }
     
     /**
      * get the last displayed item
      *
      * @param string $id the pagination id
      */
-    public static function getLastItem($id = 'default') {
+    public static function getLastItem($id = 'default')
+    {
         $_total = SmartyPaginate::getTotal($id);
         $_limit = SmartyPaginate::getLimit($id);
         $_last = SmartyPaginate::getCurrentItem($id) + $_limit - 1;
-        return ($_last <= $_total) ? $_last : $_total; 
-    }    
+        return ($_last <= $_total) ? $_last : $_total;
+    }
     
     /**
      * assign $paginate var values
@@ -233,8 +254,9 @@ class SmartyPaginate {
      * @param string $var the name of the assigned var
      * @param string $id the pagination id
      */
-    public static function assign(&$smarty, $var = 'paginate', $id = 'default') {
-        if(is_object($smarty) && (strtolower(get_class($smarty)) == 'smarty' || is_subclass_of($smarty, 'smarty'))) {
+    public static function assign(&$smarty, $var = 'paginate', $id = 'default')
+    {
+        if (is_object($smarty) && (strtolower(get_class($smarty)) == 'smarty' || is_subclass_of($smarty, 'smarty'))) {
             $_paginate['total'] = SmartyPaginate::getTotal($id);
             $_paginate['first'] = SmartyPaginate::getCurrentItem($id);
             $_paginate['last'] = SmartyPaginate::getLastItem($id);
@@ -250,8 +272,8 @@ class SmartyPaginate {
             
             $_item = 1;
             $_page = 1;
-            while($_item <= $_paginate['total'])           {
-                $_paginate['page'][$_page]['number'] = $_page;   
+            while ($_item <= $_paginate['total']) {
+                $_paginate['page'][$_page]['number'] = $_page;
                 $_paginate['page'][$_page]['item_start'] = $_item;
                 $_paginate['page'][$_page]['item_end'] = ($_item + $_paginate['limit'] - 1 <= $_paginate['total']) ? $_item + $_paginate['limit'] - 1 : $_paginate['total'];
                 $_paginate['page'][$_page]['is_current'] = ($_item == $_paginate['current_item']);
@@ -261,9 +283,9 @@ class SmartyPaginate {
             $smarty->assign($var, $_paginate);
         } else {
             trigger_error("SmartyPaginate: [assign] I need a valid Smarty object.");
-            return false;            
-        }        
-    }    
+            return false;
+        }
+    }
 
     
     /**
@@ -272,7 +294,8 @@ class SmartyPaginate {
      * @param string $text index of the current item
      * @param string $id the pagination id
      */
-    public static function setPrevText($text, $id = 'default') {
+    public static function setPrevText($text, $id = 'default')
+    {
         $_SESSION['SmartyPaginate'][$id]['prev_text'] = $text;
     }
 
@@ -281,9 +304,10 @@ class SmartyPaginate {
      *
      * @param string $id the pagination id
      */
-    public static function getPrevText($id = 'default') {
+    public static function getPrevText($id = 'default')
+    {
         return $_SESSION['SmartyPaginate'][$id]['prev_text'];
-    }    
+    }
     
     /**
      * set the text for the "next" page link
@@ -291,7 +315,8 @@ class SmartyPaginate {
      * @param string $text index of the current item
      * @param string $id the pagination id
      */
-    public static function setNextText($text, $id = 'default') {
+    public static function setNextText($text, $id = 'default')
+    {
         $_SESSION['SmartyPaginate'][$id]['next_text'] = $text;
     }
     
@@ -300,9 +325,10 @@ class SmartyPaginate {
      *
      * @param string $id the pagination id
      */
-    public static function getNextText($id = 'default') {
+    public static function getNextText($id = 'default')
+    {
         return $_SESSION['SmartyPaginate'][$id]['next_text'];
-    }    
+    }
 
     /**
      * set the text for the "first" page link
@@ -310,7 +336,8 @@ class SmartyPaginate {
      * @param string $text index of the current item
      * @param string $id the pagination id
      */
-    public static function setFirstText($text, $id = 'default') {
+    public static function setFirstText($text, $id = 'default')
+    {
         $_SESSION['SmartyPaginate'][$id]['first_text'] = $text;
     }
     
@@ -319,9 +346,10 @@ class SmartyPaginate {
      *
      * @param string $id the pagination id
      */
-    public static function getFirstText($id = 'default') {
+    public static function getFirstText($id = 'default')
+    {
         return $_SESSION['SmartyPaginate'][$id]['first_text'];
-    }    
+    }
     
     /**
      * set the text for the "last" page link
@@ -329,7 +357,8 @@ class SmartyPaginate {
      * @param string $text index of the current item
      * @param string $id the pagination id
      */
-    public static function setLastText($text, $id = 'default') {
+    public static function setLastText($text, $id = 'default')
+    {
         $_SESSION['SmartyPaginate'][$id]['last_text'] = $text;
     }
     
@@ -338,34 +367,37 @@ class SmartyPaginate {
      *
      * @param string $id the pagination id
      */
-    public static function getLastText($id = 'default') {
+    public static function getLastText($id = 'default')
+    {
         return $_SESSION['SmartyPaginate'][$id]['last_text'];
-    }    
+    }
     
     /**
      * set default number of page groupings in {paginate_middle}
      *
      * @param string $id the pagination id
      */
-    public static function setPageLimit($limit, $id = 'default') {
-        if(!preg_match('!^\d+$!', $limit)) {
+    public static function setPageLimit($limit, $id = 'default')
+    {
+        if (!preg_match('!^\d+$!', $limit)) {
             trigger_error('SmartyPaginate setPageLimit: limit must be an integer.');
             return false;
         }
         settype($limit, 'integer');
-        if($limit < 1) {
+        if ($limit < 1) {
             trigger_error('SmartyPaginate setPageLimit: limit must be greater than zero.');
             return false;
         }
         $_SESSION['SmartyPaginate'][$id]['page_limit'] = $limit;
-    }    
+    }
 
     /**
      * get default number of page groupings in {paginate_middle}
      *
      * @param string $id the pagination id
      */
-    public static function getPageLimit($id = 'default') {
+    public static function getPageLimit($id = 'default')
+    {
         return $_SESSION['SmartyPaginate'][$id]['page_limit'];
     }
             
@@ -374,27 +406,22 @@ class SmartyPaginate {
      *
      * @param string $id the pagination id
      */
-    public static function _getPrevPageItem($id = 'default') {
-        
+    public static function _getPrevPageItem($id = 'default')
+    {
         $_prev_item = $_SESSION['SmartyPaginate'][$id]['current_item'] - $_SESSION['SmartyPaginate'][$id]['item_limit'];
         
-        return ($_prev_item > 0) ? $_prev_item : false; 
-    }    
+        return ($_prev_item > 0) ? $_prev_item : false;
+    }
 
     /**
      * get the previous page of items
      *
      * @param string $id the pagination id
      */
-    public static function _getNextPageItem($id = 'default') {
-                
+    public static function _getNextPageItem($id = 'default')
+    {
         $_next_item = $_SESSION['SmartyPaginate'][$id]['current_item'] + $_SESSION['SmartyPaginate'][$id]['item_limit'];
         
-        return ($_next_item <= $_SESSION['SmartyPaginate'][$id]['item_total']) ? $_next_item : false; 
-    }    
-    
-                
-            
+        return ($_next_item <= $_SESSION['SmartyPaginate'][$id]['item_total']) ? $_next_item : false;
+    }
 }
-
-?>

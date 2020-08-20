@@ -88,10 +88,13 @@ function smarty_block_textformat($params, $content, Smarty_Internal_Template $te
         }
         // convert mult. spaces & special chars to single space
         $_paragraph =
-            preg_replace(array('!\s+!' . Smarty::$_UTF8_MODIFIER,
+            preg_replace(
+                array('!\s+!' . Smarty::$_UTF8_MODIFIER,
                                '!(^\s+)|(\s+$)!' . Smarty::$_UTF8_MODIFIER),
-                         array(' ',
-                               ''), $_paragraph);
+                array(' ',
+                               ''),
+                $_paragraph
+            );
         // indent first line
         if ($indent_first > 0) {
             $_paragraph = str_repeat($indent_char, $indent_first) . $_paragraph;

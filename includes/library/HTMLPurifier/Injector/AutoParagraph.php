@@ -96,7 +96,7 @@ class HTMLPurifier_Injector_AutoParagraph extends HTMLPurifier_Injector
             //                  ------------
             $token = array();
             $this->_splitText($text, $token);
-            // Abort!
+        // Abort!
         } else {
             // State 4.1: ...<b>PAR1
             //                  ----

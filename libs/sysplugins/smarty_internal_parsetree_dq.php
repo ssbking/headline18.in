@@ -45,12 +45,16 @@ class Smarty_Internal_ParseTree_Dq extends Smarty_Internal_ParseTree
         ) {
             if ($subtree instanceof Smarty_Internal_ParseTree_Code) {
                 $this->subtrees[ $last_subtree ]->data =
-                    $parser->compiler->appendCode($this->subtrees[ $last_subtree ]->data,
-                                                  '<?php echo ' . $subtree->data . ';?>');
+                    $parser->compiler->appendCode(
+                        $this->subtrees[ $last_subtree ]->data,
+                        '<?php echo ' . $subtree->data . ';?>'
+                    );
             } elseif ($subtree instanceof Smarty_Internal_ParseTree_DqContent) {
                 $this->subtrees[ $last_subtree ]->data =
-                    $parser->compiler->appendCode($this->subtrees[ $last_subtree ]->data,
-                                                  '<?php echo "' . $subtree->data . '";?>');
+                    $parser->compiler->appendCode(
+                        $this->subtrees[ $last_subtree ]->data,
+                        '<?php echo "' . $subtree->data . '";?>'
+                    );
             } else {
                 $this->subtrees[ $last_subtree ]->data =
                     $parser->compiler->appendCode($this->subtrees[ $last_subtree ]->data, $subtree->data);

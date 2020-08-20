@@ -3,49 +3,49 @@
 * PHP Enter is licensed under the
 * GNU General Public License version 2
 * ************************************* */
-include ('header.php');
+include('header.php');
 ?>
 <div id="vforms">
 <div id="cconfig">Banners</div>
 HTML or Adsense
 <?php
-if(isset($_POST['submit'])) {
- $adsoffon = $_POST['adsoffon'];
- $senseup = $_POST['senseup'];
- $sensedown = $_POST['sensedown'];
- if(get_magic_quotes_gpc()) {
-  $adsoffon = stripslashes($adsoffon);
-  $senseup = stripslashes($senseup);
-  $sensedown = stripslashes($sensedown);
- }
- $sql = $conn->Prepare('UPDATE abcoption SET valueopt = '.$conn->qstr($adsoffon).' WHERE optionid = '.$conn->qstr("28").'');
- if($conn->Execute($sql) === false) {
-  print '<div class="error">'.$conn->ErrorMsg().'</div>';
- }
- $sql2 = $conn->Prepare('UPDATE abcoption SET valueopt = '.$conn->qstr($senseup).' WHERE optionid = '.$conn->qstr("29").'');
- if($conn->Execute($sql2) === false) {
-  print '<div class="error">'.$conn->ErrorMsg().'</div>';
- }
- $sql3 = $conn->Prepare('UPDATE abcoption SET valueopt = '.$conn->qstr($sensedown).' WHERE optionid = '.$conn->qstr("30").'');
- if($conn->Execute($sql3) === false) {
-  print '<div class="error">'.$conn->ErrorMsg().'</div>';
- }
- echo "<div class ='info'>Changes Saved Successfully</div>";
-?>
+if (isset($_POST['submit'])) {
+    $adsoffon = $_POST['adsoffon'];
+    $senseup = $_POST['senseup'];
+    $sensedown = $_POST['sensedown'];
+    if (get_magic_quotes_gpc()) {
+        $adsoffon = stripslashes($adsoffon);
+        $senseup = stripslashes($senseup);
+        $sensedown = stripslashes($sensedown);
+    }
+    $sql = $conn->Prepare('UPDATE abcoption SET valueopt = '.$conn->qstr($adsoffon).' WHERE optionid = '.$conn->qstr("28").'');
+    if ($conn->Execute($sql) === false) {
+        print '<div class="error">'.$conn->ErrorMsg().'</div>';
+    }
+    $sql2 = $conn->Prepare('UPDATE abcoption SET valueopt = '.$conn->qstr($senseup).' WHERE optionid = '.$conn->qstr("29").'');
+    if ($conn->Execute($sql2) === false) {
+        print '<div class="error">'.$conn->ErrorMsg().'</div>';
+    }
+    $sql3 = $conn->Prepare('UPDATE abcoption SET valueopt = '.$conn->qstr($sensedown).' WHERE optionid = '.$conn->qstr("30").'');
+    if ($conn->Execute($sql3) === false) {
+        print '<div class="error">'.$conn->ErrorMsg().'</div>';
+    }
+    echo "<div class ='info'>Changes Saved Successfully</div>"; ?>
 <script>
 window.location.replace("ads.php");
 </script>
-<?php } else { ?>
+<?php
+} else { ?>
 <form method="post" action="ads.php">
 Google Adsense Off/On<br />
-<?php if($adsoffon == 1) { ?>
+<?php if ($adsoffon == 1) { ?>
 <select style="background:#FFF6C1;" class="form-control" name="adsoffon">
 <option value='1'>- Adsense Off</option>
 <option style="background:#ffffff;" value='1'>---- Off</option>
 <option style="background:#ffffff;" value='2'>------On</option>
 </select>
 <?php } ?>
-<?php if($adsoffon == 2) { ?>
+<?php if ($adsoffon == 2) { ?>
 <select style="background:#EEFFE3;" class="form-control" name="adsoffon">
 <option value='2'>-- Adsense On</option>
 <option style="background:#ffffff;" value='1'>---- Off</option>
@@ -62,7 +62,7 @@ Adsense II Responive Ad Unit<br /><textarea name="sensedown"><?php echo @$sensed
 <?php } ?>
 </div>
 <?php
-include ('footer.php');
+include('footer.php');
 $conn->Close();
 /**************************************
 * Revision: v.beta

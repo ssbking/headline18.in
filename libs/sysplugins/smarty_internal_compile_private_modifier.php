@@ -52,8 +52,12 @@ class Smarty_Internal_Compile_Private_Modifier extends Smarty_Internal_CompileBa
                         if (isset($compiler->smarty->registered_plugins[ Smarty::PLUGIN_MODIFIER ][ $modifier ])) {
                             if (is_callable($compiler->smarty->registered_plugins[ Smarty::PLUGIN_MODIFIER ][ $modifier ][ 0 ])) {
                                 $output =
-                                    sprintf('call_user_func_array($_smarty_tpl->registered_plugins[ \'%s\' ][ %s ][ 0 ], array( %s ))',
-                                            Smarty::PLUGIN_MODIFIER, var_export($modifier, true), $params);
+                                    sprintf(
+                                        'call_user_func_array($_smarty_tpl->registered_plugins[ \'%s\' ][ %s ][ 0 ], array( %s ))',
+                                        Smarty::PLUGIN_MODIFIER,
+                                        var_export($modifier, true),
+                                        $params
+                                    );
                                 $compiler->known_modifier_type[ $modifier ] = $type;
                                 break 2;
                             }
@@ -63,8 +67,11 @@ class Smarty_Internal_Compile_Private_Modifier extends Smarty_Internal_CompileBa
                         // registered modifier compiler
                         if (isset($compiler->smarty->registered_plugins[ Smarty::PLUGIN_MODIFIERCOMPILER ][ $modifier ][ 0 ])) {
                             $output =
-                                call_user_func($compiler->smarty->registered_plugins[ Smarty::PLUGIN_MODIFIERCOMPILER ][ $modifier ][ 0 ],
-                                               $single_modifier, $compiler->smarty);
+                                call_user_func(
+                                    $compiler->smarty->registered_plugins[ Smarty::PLUGIN_MODIFIERCOMPILER ][ $modifier ][ 0 ],
+                                    $single_modifier,
+                                    $compiler->smarty
+                                );
                             $compiler->known_modifier_type[ $modifier ] = $type;
                             break 2;
                         }

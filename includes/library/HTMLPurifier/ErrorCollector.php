@@ -200,7 +200,6 @@ class HTMLPurifier_ErrorCollector
         } else {
             return '<ul><li>' . implode('</li><li>', $ret) . '</li></ul>';
         }
-
     }
 
     private function _renderStruct(&$ret, $struct, $line = null, $col = null)

@@ -56,6 +56,7 @@ function smarty_modifier_escape($string, $esc_type = 'html', $char_set = null, $
                 }
             }
 
+            // no break
         case 'htmlall':
             if (Smarty::$_MBSTRING) {
                 // mb_convert_encoding ignores htmlspecialchars()
@@ -100,6 +101,7 @@ function smarty_modifier_escape($string, $esc_type = 'html', $char_set = null, $
                 }
             }
 
+            // no break
         case 'url':
             return rawurlencode($string);
 

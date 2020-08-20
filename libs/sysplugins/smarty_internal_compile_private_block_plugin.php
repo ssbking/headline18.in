@@ -84,9 +84,12 @@ class Smarty_Internal_Compile_Private_Block_Plugin extends Smarty_Internal_Compi
                 $mod_content2 = "\$_block_content{$this->nesting}";
                 $mod_content = "\$_block_content{$this->nesting} = ob_get_clean();\n";
                 $mod_pre = "ob_start();\n";
-                $mod_post = 'echo ' . $compiler->compileTag('private_modifier', array(),
-                                                            array('modifierlist' => $parameter[ 'modifier_list' ],
-                                                                  'value' => 'ob_get_clean()')) . ";\n";
+                $mod_post = 'echo ' . $compiler->compileTag(
+                    'private_modifier',
+                    array(),
+                    array('modifierlist' => $parameter[ 'modifier_list' ],
+                                                                  'value' => 'ob_get_clean()')
+                ) . ";\n";
             }
             $output = "<?php {$mod_content}\$_block_repeat=false;\n{$mod_pre}echo {$callback}({$_params}, {$mod_content2}, \$_smarty_tpl, \$_block_repeat);\n{$mod_post}}\n";
             $output .= 'array_pop($_smarty_tpl->smarty->_cache[\'_tag_stack\']);?>';

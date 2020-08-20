@@ -103,8 +103,10 @@ function smarty_function_html_options($params, Smarty_Internal_Template $templat
             case 'readonly':
                 if (!empty($params[ 'strict' ])) {
                     if (!is_scalar($_val)) {
-                        trigger_error("html_options: {$_key} attribute must be a scalar, only boolean true or string '{$_key}' will actually add the attribute",
-                                      E_USER_NOTICE);
+                        trigger_error(
+                            "html_options: {$_key} attribute must be a scalar, only boolean true or string '{$_key}' will actually add the attribute",
+                            E_USER_NOTICE
+                        );
                     }
 
                     if ($_val === true || $_val === $_key) {
@@ -115,6 +117,7 @@ function smarty_function_html_options($params, Smarty_Internal_Template $templat
                 }
             // omit break; to fall through!
 
+            // no break
             default:
                 if (!is_array($_val)) {
                     $extra .= ' ' . $_key . '="' . smarty_function_escape_special_chars($_val) . '"';
@@ -196,8 +199,14 @@ function smarty_function_html_options_optoutput($key, $value, $selected, $id, $c
     } else {
         $_idx = 0;
         $_html_result =
-            smarty_function_html_options_optgroup($key, $value, $selected, !empty($id) ? ($id . '-' . $idx) : null,
-                                                  $class, $_idx);
+            smarty_function_html_options_optgroup(
+                $key,
+                $value,
+                $selected,
+                !empty($id) ? ($id . '-' . $idx) : null,
+                $class,
+                $_idx
+            );
         $idx ++;
     }
 

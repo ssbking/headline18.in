@@ -70,8 +70,11 @@ class Smarty_Internal_Compile_Private_Object_Function extends Smarty_Internal_Co
             $output = "\$_smarty_tpl->smarty->registered_objects['{$tag}'][0]->{$method}";
         }
         if (!empty($parameter[ 'modifierlist' ])) {
-            $output = $compiler->compileTag('private_modifier', array(),
-                                            array('modifierlist' => $parameter[ 'modifierlist' ], 'value' => $output));
+            $output = $compiler->compileTag(
+                'private_modifier',
+                array(),
+                array('modifierlist' => $parameter[ 'modifierlist' ], 'value' => $output)
+            );
         }
         if (empty($_assign)) {
             return "<?php echo {$output};?>\n";

@@ -1,12 +1,13 @@
 <?php
-if(!defined('CONST_VALS')) {
-die('You cannot access this file directly!');
+if (!defined('CONST_VALS')) {
+    die('You cannot access this file directly!');
 }
-if($editor == '1') {
-?>
+if ($editor == '1') {
+    ?>
 <script src="scripts/ckeditor/ckeditor.js"></script>
 <script src="scripts/ckeditor/config.js"></script>
-<?php } ?>
+<?php
+} ?>
 <form action="edit.php" id="incformer" enctype="multipart/form-data" method="post">
 <input type="hidden" name="newsid" value="<?php echo $newsid; ?>" />
 <input type="hidden" name="univer" value="<?php echo $univer; ?>" />
@@ -28,20 +29,21 @@ if($editor == '1') {
 $result = "SELECT * FROM categori ORDER by parent, catid ASC";
 $an = $conn->Execute($result);
 echo "<select name='idblog' class='form-control'>";
-if(!$an)
-print $conn->ErrorMsg();
-else
-while(!$an->EOF) {
-if($an->fields['catid'] == $idblog) {
-echo "<option value='".$an->fields['catid']."|".$an->fields['name']."|".$an->fields['seoname']."' selected> ".$an->fields['name']." </option>";
+if (!$an) {
+    print $conn->ErrorMsg();
 } else {
-if($an->fields['cord'] == 0) {
-echo "<option value='".$an->fields['catid']."|".$an->fields['name']."|".$an->fields['seoname']."'> ".$an->fields['name']." </option>";
-} else {
-echo "<option value='".$an->fields['catid']."|".$an->fields['name']."|".$an->fields['seoname']."'> - - ".$an->fields['name']." </option>";
-}
-}
-$an->MoveNext();
+    while (!$an->EOF) {
+        if ($an->fields['catid'] == $idblog) {
+            echo "<option value='".$an->fields['catid']."|".$an->fields['name']."|".$an->fields['seoname']."' selected> ".$an->fields['name']." </option>";
+        } else {
+            if ($an->fields['cord'] == 0) {
+                echo "<option value='".$an->fields['catid']."|".$an->fields['name']."|".$an->fields['seoname']."'> ".$an->fields['name']." </option>";
+            } else {
+                echo "<option value='".$an->fields['catid']."|".$an->fields['name']."|".$an->fields['seoname']."'> - - ".$an->fields['name']." </option>";
+            }
+        }
+        $an->MoveNext();
+    }
 }
 echo '</select>';
 ?>
@@ -71,12 +73,12 @@ echo '</select>';
 </div>
 </div>
 <div class="col-md-2">
-<?php if($image == true) { ?>
+<?php if ($image == true) { ?>
 <img width="184" height="112" src="<?php echo 'minthumb/'.$image; ?>">
 <?php } ?>
 </div>
 <div class="col-md-6">
-<?php if($main == 0) { ?>
+<?php if ($main == 0) { ?>
 <div class="frb frb-primary">
 <div class="row">					
 <div class="col-md-6">
@@ -94,7 +96,7 @@ echo '</select>';
 </div>
 </div>
 <?php }
-if($main == 4) { ?>
+if ($main == 4) { ?>
 <div class="frb frb-primary">
 <div class="row">
 <div class="col-md-6">
@@ -119,7 +121,7 @@ if($main == 4) { ?>
 <div id="editor"></div>
 <label><?php echo $lang['230']; ?>&nbsp;&nbsp;<span class="ckarea"><?php echo $lang['231']; ?></span></label>
 <textarea name="longdesc" id="longdesc" class="postarea form-control" rows="9" required="required"><?php echo stripslashes($longdesc); ?></textarea>
-<?php if($editor == '1') { ?>
+<?php if ($editor == '1') { ?>
 <script>
 CKEDITOR.replace( 'longdesc' );
 </script>
@@ -157,7 +159,7 @@ var fileName = $(this).val();
 $(this).next('.custom-file-label').html(fileName);
 });
 </script>
-<?php if($editor == '1') { ?>
+<?php if ($editor == '1') { ?>
 <script>
 $("form").submit(function(e) {
 var description = CKEDITOR.instances['longdesc'].getData().replace(/<[^>]*>/gi, '').length;

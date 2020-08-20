@@ -143,9 +143,16 @@ class Smarty_Internal_Template extends Smarty_Internal_TemplateBase
      *
      * @throws \SmartyException
      */
-    public function __construct($template_resource, Smarty $smarty, Smarty_Internal_Data $_parent = null,
-                                $_cache_id = null, $_compile_id = null, $_caching = null, $_cache_lifetime = null,
-                                $_isConfig = false)
+    public function __construct(
+        $template_resource,
+        Smarty $smarty,
+        Smarty_Internal_Data $_parent = null,
+        $_cache_id = null,
+        $_compile_id = null,
+        $_caching = null,
+        $_cache_lifetime = null,
+        $_isConfig = false
+    )
     {
         $this->smarty = $smarty;
         // Smarty parameter
@@ -209,8 +216,11 @@ class Smarty_Internal_Template extends Smarty_Internal_TemplateBase
         // display or fetch
         if ($display) {
             if ($this->caching && $this->smarty->cache_modified_check) {
-                $this->smarty->ext->_cacheModify->cacheModifiedCheck($this->cached, $this,
-                                                                     isset($content) ? $content : ob_get_clean());
+                $this->smarty->ext->_cacheModify->cacheModifiedCheck(
+                    $this->cached,
+                    $this,
+                    isset($content) ? $content : ob_get_clean()
+                );
             } else {
                 if ((!$this->caching || $this->cached->has_nocache_code || $this->source->handler->recompiled) &&
                     !$no_output_filter && (isset($this->smarty->autoload_filters[ 'output' ]) ||
@@ -263,8 +273,18 @@ class Smarty_Internal_Template extends Smarty_Internal_TemplateBase
      * @throws \Exception
      * @throws \SmartyException
      */
-    public function _subTemplateRender($template, $cache_id, $compile_id, $caching, $cache_lifetime, $data, $scope,
-                                       $forceTplCache, $uid = null, $content_func = null)
+    public function _subTemplateRender(
+        $template,
+        $cache_id,
+        $compile_id,
+        $caching,
+        $cache_lifetime,
+        $data,
+        $scope,
+        $forceTplCache,
+        $uid = null,
+        $content_func = null
+    )
     {
         $tpl = clone $this;
         $tpl->parent = $this;
@@ -426,9 +446,10 @@ class Smarty_Internal_Template extends Smarty_Internal_TemplateBase
      *
      * @throws \SmartyException
      */
-    public function _checkPlugins($plugins) {
+    public function _checkPlugins($plugins)
+    {
         static $checked = array();
-        foreach($plugins as $plugin) {
+        foreach ($plugins as $plugin) {
             $name = join('::', (array)$plugin[ 'function' ]);
             if (!isset($checked[$name])) {
                 if (!is_callable($plugin['function'])) {
@@ -485,7 +506,7 @@ class Smarty_Internal_Template extends Smarty_Internal_TemplateBase
                     if ($tpl->source->filepath === $_file_to_check[ 0 ]) {
                         // do not recheck current template
                         continue;
-                        //$mtime = $tpl->source->getTimeStamp();
+                    //$mtime = $tpl->source->getTimeStamp();
                     } else {
                         // file and php types can be checked without loading the respective resource handlers
                         $mtime = is_file($_file_to_check[ 0 ]) ? filemtime($_file_to_check[ 0 ]) : false;
@@ -627,8 +648,11 @@ class Smarty_Internal_Template extends Smarty_Internal_TemplateBase
             $this->smarty->loadPlugin($this->source->compiler_class);
         }
         $this->compiler =
-            new $this->source->compiler_class($this->source->template_lexer_class, $this->source->template_parser_class,
-                                              $this->smarty);
+            new $this->source->compiler_class(
+                $this->source->template_lexer_class,
+                $this->source->template_parser_class,
+                $this->smarty
+            );
     }
 
     /**

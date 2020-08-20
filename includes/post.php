@@ -1,39 +1,39 @@
-<?php if(!defined('CONST_VAL')) {
-die('You cannot access this file directly!');
+<?php if (!defined('CONST_VAL')) {
+    die('You cannot access this file directly!');
 }
-if($editortrue == '1') {
-?>
+if ($editortrue == '1') {
+    ?>
 <script src="scripts/ckeditor/ckeditor.js"></script>
 <script src="scripts/ckeditor/config.js"></script>
 <?php
 }
-if(isset($_POST['incname'])) {
-if(get_magic_quotes_gpc()) {
-$url = stripslashes(htmlspecialchars($_POST['incname']));
-} else {
-$url = htmlspecialchars($_POST['incname']);
-}
-if(!preg_match("/^(https?:\/\/+[\w\-]+\.[\w\-]+)/i",$url)) {
-echo "<div class='alert alert-danger'>$lang[187]&nbsp;<a href='auth.php?auth=6'>$lang[135]</a></div></div>";
-$smarty->display('footer.php');
-die();
-}
-$result = enterUrlData($url);
-if($result['title'] == "") {
-$title = $lang['223'];
-} else {
-$title = $result['title'];
-}
-if(@$result['metaTags']['description']['value'] == "") {
-$description = $lang['223'];
-} else {
-$description = $result['metaTags']['description']['value'];
-}
-if(@$result['metaTags']['keywords']['value'] == "") {
-$keywords = $lang['223'];
-} else {
-$keywords = $result['metaTags']['keywords']['value'];
-}
+if (isset($_POST['incname'])) {
+    if (get_magic_quotes_gpc()) {
+        $url = stripslashes(htmlspecialchars($_POST['incname']));
+    } else {
+        $url = htmlspecialchars($_POST['incname']);
+    }
+    if (!preg_match("/^(https?:\/\/+[\w\-]+\.[\w\-]+)/i", $url)) {
+        echo "<div class='alert alert-danger'>$lang[187]&nbsp;<a href='auth.php?auth=6'>$lang[135]</a></div></div>";
+        $smarty->display('footer.php');
+        die();
+    }
+    $result = enterUrlData($url);
+    if ($result['title'] == "") {
+        $title = $lang['223'];
+    } else {
+        $title = $result['title'];
+    }
+    if (@$result['metaTags']['description']['value'] == "") {
+        $description = $lang['223'];
+    } else {
+        $description = $result['metaTags']['description']['value'];
+    }
+    if (@$result['metaTags']['keywords']['value'] == "") {
+        $keywords = $lang['223'];
+    } else {
+        $keywords = $result['metaTags']['keywords']['value'];
+    }
 }
 ?>
 <form action="post.php" id="incformer" enctype="multipart/form-data" method="post">
@@ -42,12 +42,12 @@ $keywords = $result['metaTags']['keywords']['value'];
 <h4><?php echo $lang['233']; ?></h4>
 </div>
 </div>
-<input type="hidden" name="address"<?php if(@$url == true) { ?> value="<?php echo @$url; ?>"<?php } else { ?> value="0"<?php } ?> />
+<input type="hidden" name="address"<?php if (@$url == true) { ?> value="<?php echo @$url; ?>"<?php } else { ?> value="0"<?php } ?> />
 <input type="hidden" name="token" value="<?php echo $token; ?>" />
 <div class="row mt-2">
 <div class="col-md-6">
 <label><?php echo $lang['224']; ?></label>
-<input type="text" class="form-control" name="title"<?php if(@$url == true) { ?> value="<?php echo $title; ?>"<?php } ?> data-validation="length" data-validation-length="5-160" />
+<input type="text" class="form-control" name="title"<?php if (@$url == true) { ?> value="<?php echo $title; ?>"<?php } ?> data-validation="length" data-validation-length="5-160" />
 </div>
 <div class="col-md-6">
 <label><?php echo $lang['225']; ?></label>
@@ -94,12 +94,12 @@ $keywords = $result['metaTags']['keywords']['value'];
 <div class="col-md-12">
 <div id="editor"></div>
 <label><?php echo $lang['230']; ?>&nbsp;&nbsp;<span class="ckarea"><?php echo $lang['231']; ?></span></label>
-<?php if(@$description == true) { ?>
+<?php if (@$description == true) { ?>
 <textarea name="longdesc" id="longdesc" class="postarea form-control" rows="9" required="required"><?php echo @$description; ?></textarea>
 <?php } else { ?>
 <textarea name="longdesc" id="longdesc" class="postarea form-control" rows="9" required="required"></textarea>
 <?php }
-if($editortrue == '1') { ?>
+if ($editortrue == '1') { ?>
 <script>
 CKEDITOR.replace( 'longdesc' );
 </script>
@@ -132,7 +132,7 @@ var fileName = $(this).val();
 $(this).next('.custom-file-label').html(fileName);
 });
 </script>
-<?php if($editortrue == '1') { ?>
+<?php if ($editortrue == '1') { ?>
 <script>
 $("form").submit(function(e) {
 var description = CKEDITOR.instances['longdesc'].getData().replace(/<[^>]*>/gi, '').length;

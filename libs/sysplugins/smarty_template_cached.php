@@ -102,7 +102,7 @@ class Smarty_Template_Cached extends Smarty_Template_Resource_Base
      *
      * @return Smarty_Template_Cached
      */
-    static function load(Smarty_Internal_Template $_template)
+    public static function load(Smarty_Internal_Template $_template)
     {
         $_template->cached = new Smarty_Template_Cached($_template);
         $_template->cached->handler->populate($_template->cached, $_template);

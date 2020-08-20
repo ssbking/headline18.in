@@ -36,10 +36,12 @@ function smarty_modifier_mb_wordwrap($str, $width = 75, $break = "\n", $cut = fa
         $_tokens = array($_token);
         if ($token_length > $width) {
             if ($cut) {
-                $_tokens = preg_split('!(.{' . $width . '})!S' . Smarty::$_UTF8_MODIFIER,
-                                      $_token,
-                                      -1,
-                                      PREG_SPLIT_NO_EMPTY + PREG_SPLIT_DELIM_CAPTURE);
+                $_tokens = preg_split(
+                    '!(.{' . $width . '})!S' . Smarty::$_UTF8_MODIFIER,
+                    $_token,
+                    -1,
+                    PREG_SPLIT_NO_EMPTY + PREG_SPLIT_DELIM_CAPTURE
+                );
             }
         }
 
@@ -61,7 +63,7 @@ function smarty_modifier_mb_wordwrap($str, $width = 75, $break = "\n", $cut = fa
                     }
                     $length = $token_length;
                 }
-            } else if ($token === "\n") {
+            } elseif ($token === "\n") {
                 // hard break must reset counters
                 $length = 0;
             }

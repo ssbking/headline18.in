@@ -44,7 +44,7 @@ class Smarty_Internal_Write_File
         if (!file_put_contents($_tmp_file, $_contents)) {
             error_reporting($_error_reporting);
             throw new SmartyException("unable to write file {$_tmp_file}");
-       }
+        }
 
         /*
          * Windows' rename() fails if the destination exists,

@@ -3,24 +3,25 @@
 * PHP Enter is licensed under the
 * GNU General Public License version 2
 * ************************************* */
-include ('../classes/adodb/adodb.inc.php');
-include ('config.php');
+include('../classes/adodb/adodb.inc.php');
+include('config.php');
 $dbdriver = "mysqli";
 ##$ADODB_CACHE_DIR = '../db/ADODB_cache';
 $conn = ADONewConnection($dbdriver);
-$conn->Connect($server,$user,$password,$database);
+$conn->Connect($server, $user, $password, $database);
 ########$conn->debug = true;
 $recordSet = $conn->Execute('SELECT optionid, nameopt, valueopt, module, active FROM abcoption');
-if(!$recordSet)
- print $conn->ErrorMsg();
-else
- while(!$recordSet->EOF) {
-  if($recordSet->fields['module'] == 1) {
-   $arr[] = $recordSet->fields;
-  }
-  $option[$recordSet->fields[0]] = $recordSet->fields[2];
-  $recordSet->MoveNext();
- }
+if (!$recordSet) {
+    print $conn->ErrorMsg();
+} else {
+    while (!$recordSet->EOF) {
+        if ($recordSet->fields['module'] == 1) {
+            $arr[] = $recordSet->fields;
+        }
+        $option[$recordSet->fields[0]] = $recordSet->fields[2];
+        $recordSet->MoveNext();
+    }
+}
 $sitetitle = $option[1];
 $metadesc = $option[2];
 $keywords = $option[3];
@@ -60,4 +61,3 @@ $logotext = $option[50];
 /**************************************
 * Revision: v.beta
 ***************************************/
-?>

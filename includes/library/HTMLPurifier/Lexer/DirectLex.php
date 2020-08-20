@@ -134,7 +134,8 @@ class HTMLPurifier_Lexer_DirectLex extends HTMLPurifier_Lexer
                             $html,
                             $cursor,
                             $position_next_lt - $cursor
-                        ), $config
+                        ),
+                        $config
                     )
                 );
                 if ($maintain_line_numbers) {
@@ -158,7 +159,8 @@ class HTMLPurifier_Lexer_DirectLex extends HTMLPurifier_Lexer
                         substr(
                             $html,
                             $cursor
-                        ), $config
+                        ),
+                        $config
                     )
                 );
                 if ($maintain_line_numbers) {
@@ -325,7 +327,8 @@ class HTMLPurifier_Lexer_DirectLex extends HTMLPurifier_Lexer
                 HTMLPurifier_Token_Text(
                     '<' .
                     $this->parseText(
-                        substr($html, $cursor), $config
+                        substr($html, $cursor),
+                        $config
                     )
                 );
                 if ($maintain_line_numbers) {
