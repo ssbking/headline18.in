@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2020-08-21 06:25:16
+/* Smarty version 3.1.32, created on 2020-08-21 09:53:21
   from 'C:\wamp64\www\headline18.in\themes\classic\maindir.php' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5f3f68ccebac22_37970499',
+  'unifunc' => 'content_5f3f9991b769e6_23445595',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '4002d543825792767e70132966407505806db5a6' => 
     array (
       0 => 'C:\\wamp64\\www\\headline18.in\\themes\\classic\\maindir.php',
-      1 => 1597991055,
+      1 => 1598003599,
       2 => 'file',
     ),
   ),
@@ -20,14 +20,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f3f68ccebac22_37970499 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f3f9991b769e6_23445595 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\wamp64\\www\\headline18.in\\libs\\plugins\\modifier.replace.php','function'=>'smarty_modifier_replace',),));
-?><header id="header">
-        <div class="container">
-          <!-- partial:partials/_navbar.html -->
-          <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="d-flex justify-content-between align-items-center navbar-top">
-              <ul class="navbar-left">
+?><div class="container">
+    <div class="row d-flex justify-content-between align-items-center navbar-top">
+    <ul class="navbar-left">
                 <li><p id="nowtime"></p></li>
                
                 <!-- <li>30°C,London</li> -->
@@ -57,65 +54,66 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\wamp64\\www\\headline18.
                 <ul class="social-media">
                   <li>
                     <a href="#">
-                      <i class="mdi mdi-instagram"></i>
+                      <i class="fa fa-instagram"></i>
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <i class="mdi mdi-facebook"></i>
+                      <i class="fa fa-facebook"></i>
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <i class="mdi mdi-youtube"></i>
+                      <i class="fa fa-youtube"></i>
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <i class="mdi mdi-linkedin"></i>
+                      <i class="fa fa-linkedin"></i>
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <i class="mdi mdi-twitter"></i>
+                      <i class="fa fa-twitter"></i>
                     </a>
                   </li>
                 </ul>
               </div>
-            </div>
-            <div class="navbar-bottom-menu">
-              <button class="navbar-toggler" type="button" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-
-              <div class="navbar-collapse justify-content-center collapse" id="navbarSupportedContent">
-              <ul id="coolMenu" class="nav navbar-nav ml-auto">
+    </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarNavAltMarkup">
+            <ul id="coolMenu" class="nav navbar-nav">
                 <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['categori']->value, 'caty', true);
 $_smarty_tpl->tpl_vars['caty']->index = -1;
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['caty']->value) {
 $_smarty_tpl->tpl_vars['caty']->index++;
-$__foreach_caty_7_saved = $_smarty_tpl->tpl_vars['caty'];
+$__foreach_caty_0_saved = $_smarty_tpl->tpl_vars['caty'];
 ?>
                 <?php $_smarty_tpl->_assignInScope('ifavaible', $_smarty_tpl->tpl_vars['caty']->total);?>
                 <?php ob_start();
 echo $_smarty_tpl->tpl_vars['toplinks']->value;
 $_prefixVariable1 = ob_get_clean();
-if ($_smarty_tpl->tpl_vars['caty']->index < $_prefixVariable1) {?> <?php if ($_smarty_tpl->tpl_vars['rewritemod']->value == 2) {?> <li class="nav-item"><a class="nav-link"
-                        href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
+if ($_smarty_tpl->tpl_vars['caty']->index < $_prefixVariable1) {?> <?php if ($_smarty_tpl->tpl_vars['rewritemod']->value == 2) {?> <li class="nav-item">
+                    <a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
 /categories.php?id=<?php echo $_smarty_tpl->tpl_vars['caty']->value['catid'];?>
 "><?php echo stripslashes($_smarty_tpl->tpl_vars['caty']->value['name']);?>
 </a>
                     <?php }?>
                     <?php if ($_smarty_tpl->tpl_vars['rewritemod']->value == 1) {?>
-                    <li class="nav-item"><a class="nav-link"
+                    <li class="nav-item"><span class="nav-link"
                             href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
 /category/<?php echo $_smarty_tpl->tpl_vars['caty']->value['catid'];?>
 /<?php echo $_smarty_tpl->tpl_vars['caty']->value['seoname'];?>
 .html"><?php echo stripslashes($_smarty_tpl->tpl_vars['caty']->value['name']);?>
-</a>
+</span>
                         <?php }?>
                         <ul>
                             <?php
@@ -150,7 +148,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     </li>
                     <?php }?>
                     <?php
-$_smarty_tpl->tpl_vars['caty'] = $__foreach_caty_7_saved;
+$_smarty_tpl->tpl_vars['caty'] = $__foreach_caty_0_saved;
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
@@ -167,7 +165,7 @@ $_smarty_tpl->tpl_vars['morecat']->index = -1;
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['morecat']->value) {
 $_smarty_tpl->tpl_vars['morecat']->index++;
-$__foreach_morecat_9_saved = $_smarty_tpl->tpl_vars['morecat'];
+$__foreach_morecat_2_saved = $_smarty_tpl->tpl_vars['morecat'];
 ?>
                             <?php ob_start();
 echo $_smarty_tpl->tpl_vars['toplinks']->value;
@@ -192,7 +190,7 @@ if ($_smarty_tpl->tpl_vars['morecat']->value['cord'] == 0 && $_smarty_tpl->tpl_v
                                 <?php }?>
                                 <?php }?>
                                 <?php
-$_smarty_tpl->tpl_vars['morecat'] = $__foreach_morecat_9_saved;
+$_smarty_tpl->tpl_vars['morecat'] = $__foreach_morecat_2_saved;
 }
 } else {
 ?>
@@ -204,14 +202,10 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                         </ul>
                         <?php }?>
             </ul>
-              </div>
-            </div>
-          </nav>
-
-          <!-- partial -->
         </div>
-      </header>
 
+    </div>
+</nav>
 <div class="container">
     <div class="row mt-3">
         <div class="col-md-8">
@@ -290,6 +284,25 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);
 </div>
         </div>
     </div>
-</div><?php }
+</div><?php }?>
+<!-- live timer -->
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
+/themes/urbanui-world-vision-ed2080d2a396/assets/js/moment.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+>
+    var myVar = setInterval(myTimer, 1000);
+
+function myTimer() {
+var d = moment().format('MMMM Do YYYY, h:mm:ss a');
+ var time = document.getElementById("nowtime");
+ time.innerHTML = d;
 }
+function myStopFunction() {
+  clearInterval(myVar);
+}
+<?php echo '</script'; ?>
+>
+<!-- live timer ends --><?php }
 }

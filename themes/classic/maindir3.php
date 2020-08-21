@@ -1,6 +1,9 @@
-<div class="container">
-    <div class="row d-flex justify-content-between align-items-center navbar-top">
-    <ul class="navbar-left">
+<header id="header">
+        <div class="container">
+          <!-- partial:partials/_navbar.html -->
+          <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="d-flex justify-content-between align-items-center navbar-top">
+              <ul class="navbar-left">
                 <li><p id="nowtime"></p></li>
                
                 <!-- <li>30°C,London</li> -->
@@ -26,49 +29,48 @@
                 <ul class="social-media">
                   <li>
                     <a href="#">
-                      <i class="fa fa-instagram"></i>
+                      <i class="mdi mdi-instagram"></i>
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <i class="fa fa-facebook"></i>
+                      <i class="mdi mdi-facebook"></i>
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <i class="fa fa-youtube"></i>
+                      <i class="mdi mdi-youtube"></i>
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <i class="fa fa-linkedin"></i>
+                      <i class="mdi mdi-linkedin"></i>
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <i class="fa fa-twitter"></i>
+                      <i class="mdi mdi-twitter"></i>
                     </a>
                   </li>
                 </ul>
               </div>
-    </div>
-</div>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarNavAltMarkup">
-            <ul id="coolMenu" class="nav navbar-nav">
+            </div>
+            <div class="navbar-bottom-menu">
+              <button class="navbar-toggler" type="button" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+
+              <div class="navbar-collapse justify-content-center collapse" id="navbarSupportedContent">
+              <ul id="coolMenu" class="nav navbar-nav ml-auto">
                 {foreach from=$categori item=caty}
                 {assign var="ifavaible" value=$caty@total}
-                {if $caty@index < {$toplinks}} {if $rewritemod==2} <li class="nav-item">
-                    <a class="nav-link" href="{$sitepath}/categories.php?id={$caty.catid}">{$caty.name|stripslashes}</a>
+                {if $caty@index < {$toplinks}} {if $rewritemod==2} <li class="nav-item"><a class="nav-link"
+                        href="{$sitepath}/categories.php?id={$caty.catid}">{$caty.name|stripslashes}</a>
                     {/if}
                     {if $rewritemod == 1}
-                    <li class="nav-item"><span class="nav-link"
-                            href="{$sitepath}/category/{$caty.catid}/{$caty.seoname}.html">{$caty.name|stripslashes}</span>
+                    <li class="nav-item"><a class="nav-link"
+                            href="{$sitepath}/category/{$caty.catid}/{$caty.seoname}.html">{$caty.name|stripslashes}</a>
                         {/if}
                         <ul>
                             {foreach from=$subcat item=inc}
@@ -111,10 +113,14 @@
                         </ul>
                         {/if}
             </ul>
-        </div>
+              </div>
+            </div>
+          </nav>
 
-    </div>
-</nav>
+          <!-- partial -->
+        </div>
+      </header>
+
 <div class="container">
     <div class="row mt-3">
         <div class="col-md-8">
@@ -163,18 +169,3 @@
         </div>
     </div>
 </div>{/if}
-<!-- live timer -->
-<script src="{$sitepath}/themes/urbanui-world-vision-ed2080d2a396/assets/js/moment.js"></script>
-<script>
-    var myVar = setInterval(myTimer, 1000);
-
-function myTimer() {
-var d = moment().format('MMMM Do YYYY, h:mm:ss a');
- var time = document.getElementById("nowtime");
- time.innerHTML = d;
-}
-function myStopFunction() {
-  clearInterval(myVar);
-}
-</script>
-<!-- live timer ends -->

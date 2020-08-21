@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2020-08-21 06:25:10
+/* Smarty version 3.1.32, created on 2020-08-21 09:52:02
   from 'C:\wamp64\www\headline18.in\themes\classic\main.php' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5f3f68c6832919_10603163',
+  'unifunc' => 'content_5f3f9942be2030_27373122',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f33150337f5e5e4b1507b227dd3a15ca8f440ac3' => 
     array (
       0 => 'C:\\wamp64\\www\\headline18.in\\themes\\classic\\main.php',
-      1 => 1597991106,
+      1 => 1598003516,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:themes/".((string)$_smarty_tpl->tpl_vars[\'themes\']->value)."/footer.php' => 1,
   ),
 ),false)) {
-function content_5f3f68c6832919_10603163 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f3f9942be2030_27373122 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\wamp64\\www\\headline18.in\\libs\\plugins\\modifier.date_format.php','function'=>'smarty_modifier_date_format',),1=>array('file'=>'C:\\wamp64\\www\\headline18.in\\libs\\plugins\\modifier.timeAgo.php','function'=>'smarty_modifier_timeAgo',),2=>array('file'=>'C:\\wamp64\\www\\headline18.in\\libs\\plugins\\modifier.truncate.php','function'=>'smarty_modifier_truncate',),3=>array('file'=>'C:\\wamp64\\www\\headline18.in\\libs\\plugins\\modifier.sortby.php','function'=>'smarty_modifier_sortby',),4=>array('file'=>'C:\\wamp64\\www\\headline18.in\\libs\\plugins\\function.counter.php','function'=>'smarty_function_counter',),));
 ?><!DOCTYPE html>
 <html lang="en">
@@ -66,8 +66,8 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\wamp64\\www\\headline18.
   <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
 /themes/urbanui-world-vision-ed2080d2a396/assets/vendors/owl.carousel/dist/assets/owl.theme.default.min.css" />
 
-<link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
-/themes/urbanui-world-vision-ed2080d2a396/assets/css/style.css" />
+<!-- <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
+/themes/urbanui-world-vision-ed2080d2a396/assets/css/style.css" /> -->
 
 <title><?php echo $_smarty_tpl->tpl_vars['sitetitle']->value;?>
 </title>
@@ -632,26 +632,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
  src="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
 /scripts/bootstrap.min.js"><?php echo '</script'; ?>
 >
-<!-- live timer -->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
-/themes/urbanui-world-vision-ed2080d2a396/assets/js/moment.js"><?php echo '</script'; ?>
->
-<?php echo '<script'; ?>
->
-    var myVar = setInterval(myTimer, 1000);
 
-function myTimer() {
-var d = moment().format('MMMM Do YYYY, h:mm:ss a');
- var time = document.getElementById("nowtime");
- time.innerHTML = d;
-}
-function myStopFunction() {
-  clearInterval(myVar);
-}
-<?php echo '</script'; ?>
->
-<!-- live timer ends -->
 
 <?php if ($_smarty_tpl->tpl_vars['slider']->value == '2') {
 echo '<script'; ?>
