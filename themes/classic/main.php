@@ -15,6 +15,15 @@
 <link rel="stylesheet" href="{$sitepath}/themes/{$themes}/styles/font-awesome.css" />
 <link rel="stylesheet" href="{$sitepath}/themes/{$themes}/styles/basic.css" />
 <link rel="alternate" type="application/atom+xml" title="{$sitetitle} - RSS" href="{$sitepath}/rss.php" />
+
+<!-- addetional css files -->
+<link rel="stylesheet" href="{$sitepath}/themes/urbanui-world-vision-ed2080d2a396/assets/vendors/mdi/css/materialdesignicons.min.css" />
+  <link rel="stylesheet" href="{$sitepath}/themes/urbanui-world-vision-ed2080d2a396/assets/vendors/aos/dist/aos.css/aos.css" />
+  <link rel="stylesheet" href="{$sitepath}/themes/urbanui-world-vision-ed2080d2a396/assets/vendors/owl.carousel/dist/assets/owl.carousel.min.css" />
+  <link rel="stylesheet" href="{$sitepath}/themes/urbanui-world-vision-ed2080d2a396/assets/vendors/owl.carousel/dist/assets/owl.theme.default.min.css" />
+
+<link rel="stylesheet" href="{$sitepath}/themes/urbanui-world-vision-ed2080d2a396/assets/css/style.css" />
+
 <title>{$sitetitle}</title>
 </head> 
 <body>
@@ -304,6 +313,22 @@
 </div>
 <script src="{$sitepath}/scripts/jquery.min.js"></script>
 <script src="{$sitepath}/scripts/bootstrap.min.js"></script>
+<!-- live timer -->
+<script src="{$sitepath}/themes/urbanui-world-vision-ed2080d2a396/assets/js/moment.js"></script>
+<script>
+    var myVar = setInterval(myTimer, 1000);
+
+function myTimer() {
+var d = moment().format('MMMM Do YYYY, h:mm:ss a');
+ var time = document.getElementById("nowtime");
+ time.innerHTML = d;
+}
+function myStopFunction() {
+  clearInterval(myVar);
+}
+</script>
+<!-- live timer ends -->
+
 {if $slider == '2'}
 <script>{literal}
 $(document).ready(function () {

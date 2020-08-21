@@ -1,68 +1,25 @@
-<header id="header">
-        <div class="container">
-          <!-- partial:partials/_navbar.html -->
-          <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="d-flex justify-content-between align-items-center navbar-top">
-              <ul class="navbar-left">
-                <li><p id="nowtime"></p></li>
-               
-                <!-- <li>30°C,London</li> -->
-              </ul>
-              <div>
-              {if $logoon == '2'}
+<div class="container">
+    <div class="row">
+    <div class="col-3">{if $logoon == '2'}
         <a class="navbar-brand" href="/">{$logotext}</a>
         {/if}
         {if $logoon == '1'}
         <a class="navbar-brand" href="/"><img src="{$sitepath}/themes/{$themes}/styles/images/logo.png"
                 alt="{$sitetitle}" width="250" height="45" /></a>
         {/if}
-              </div>
-              <div class="d-flex">
-                <ul class="navbar-right">
-                  <li>
-                    <a href="#">हिन्दी</a>
-                  </li>
-                  <li>
-                    <a href="#">मराठी</a>
-                  </li>
-                </ul>
-                <ul class="social-media">
-                  <li>
-                    <a href="#">
-                      <i class="mdi mdi-instagram"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="mdi mdi-facebook"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="mdi mdi-youtube"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="mdi mdi-linkedin"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="mdi mdi-twitter"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="navbar-bottom-menu">
-              <button class="navbar-toggler" type="button" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-
-              <div class="navbar-collapse justify-content-center collapse" id="navbarSupportedContent">
-              <ul id="coolMenu" class="nav navbar-nav ml-auto">
+        </div>
+    <div class="col-8">thay</div>
+    </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <span>this is thew </span>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <ul id="coolMenu" class="nav navbar-nav ml-auto">
                 {foreach from=$categori item=caty}
                 {assign var="ifavaible" value=$caty@total}
                 {if $caty@index < {$toplinks}} {if $rewritemod==2} <li class="nav-item"><a class="nav-link"
@@ -113,14 +70,10 @@
                         </ul>
                         {/if}
             </ul>
-              </div>
-            </div>
-          </nav>
-
-          <!-- partial -->
         </div>
-      </header>
-
+        
+    </div>
+</nav>
 <div class="container">
     <div class="row mt-3">
         <div class="col-md-8">
