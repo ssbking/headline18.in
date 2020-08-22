@@ -148,17 +148,17 @@ if (isset($_POST['query'])) {
     $title = strip_tags($title);
     $brief = strip_tags($brief);
     enterBlacklist($address, $title, $brief, $longdesc, $smarty);
-    if (strlen($title) < 5 or strlen($title) > 160) {
+    if (strlen($title) < 5 or strlen($title) > 560) {
         echo "<div class='alert alert-danger'>$lang[239] <a href='javascript:history.go(-1)'>$lang[135]</a></div></div>";
         $smarty->display('footer.php');
         die();
     }
-    if (strlen($brief) > 500) {
+    if (strlen($brief) > 1000) {
         echo "<div class='alert alert-danger'>$lang[240] <a href='javascript:history.go(-1)'>$lang[135]</a></div></div>";
         $smarty->display('footer.php');
         die();
     }
-    if (strlen($longdesc) < 50 or strlen($longdesc) > $maxposting) {
+    if (strlen($longdesc) < 110 or strlen($longdesc) > $maxposting) {
         echo "<div class='alert alert-danger'>$lang[241] <a href='javascript:history.go(-1)'>$lang[135]</a></div></div>";
         $smarty->display('footer.php');
         die();

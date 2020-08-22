@@ -1,63 +1,74 @@
-<div class="container">
-    <div class="row d-flex justify-content-between align-items-center navbar-top">
-    <ul class="navbar-left">
-                <li><p id="nowtime"></p></li>
-               
-                <!-- <li>30°C,London</li> -->
-              </ul>
-              <div>
-              {if $logoon == '2'}
-        <a class="navbar-brand" href="/">{$logotext}</a>
-        {/if}
-        {if $logoon == '1'}
-        <a class="navbar-brand" href="/"><img src="{$sitepath}/themes/{$themes}/styles/images/logo.png"
-                alt="{$sitetitle}" width="250" height="45" /></a>
-        {/if}
-              </div>
-              <div class="d-flex">
-                <ul class="navbar-right">
-                  <li>
+<!-- top menu -->
+<div class="row">
+    <div class=" d-flex justify-content-between align-items-center navbar-top" style="width: 100%;background: rgb(228,230,133);
+                background: linear-gradient(330deg, rgba(228,230,133,1) 17%, rgba(255,255,255,1) 63%); color: #242F5C;padding-top: inherit; padding-bottom: inherit;">
+          <!-- logo/brand text -->
+          <div class="logo">
+            {if $logoon == '2'}
+            <a class="navbar-brand" href="/">{$logotext}</a>
+            {/if}
+            {if $logoon == '1'}
+            <a class="navbar-brand" href="/"><img src="{$sitepath}/themes/{$themes}/styles/images/newlogo.jpeg"
+                    alt="{$sitetitle}" width="200" height="55"  style="padding-left: 18px;"></a>
+            {/if}
+        </div>
+        <!-- logo ends  -->
+        <ul class="navbar-left">
+            <li>
+                <p id="nowtime"></p>
+                </li>
+            <!-- <li>30°C,London</li> -->
+        </ul>
+      
+
+        <div class="d-flex">
+            <ul class="navbar-right">
+                <li style="border-color: azure;border: solid;">
                     <a href="#">हिन्दी</a>
-                  </li>
-                  <li>
+                </li>
+                <li>
                     <a href="#">मराठी</a>
-                  </li>
+                </li>
+               
                 </ul>
                 <ul class="social-media">
-                  <li>
+                <li>
                     <a href="#">
-                      <i class="fa fa-instagram"></i>
+                        <i class="fa fa-instagram"></i>
                     </a>
-                  </li>
-                  <li>
+                </li>
+                <li>
                     <a href="#">
-                      <i class="fa fa-facebook"></i>
+                        <i class="fa fa-facebook"></i>
                     </a>
-                  </li>
-                  <li>
+                </li>
+                <li>
                     <a href="#">
-                      <i class="fa fa-youtube"></i>
+                        <i class="fa fa-youtube"></i>
                     </a>
-                  </li>
-                  <li>
+                </li>
+                <li>
                     <a href="#">
-                      <i class="fa fa-linkedin"></i>
+                        <i class="fa fa-linkedin"></i>
                     </a>
-                  </li>
-                  <li>
+                </li>
+                <li>
                     <a href="#">
-                      <i class="fa fa-twitter"></i>
+                        <i class="fa fa-twitter"></i>
                     </a>
-                  </li>
-                </ul>
-              </div>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
+<!-- middle menu -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+    <div class="row">
+    
+    <div class="col-md-8" id="thisnav">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <a class="navbar-toggler-icon"></a>
         </button>
         <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarNavAltMarkup">
             <ul id="coolMenu" class="nav navbar-nav">
@@ -67,8 +78,8 @@
                     <a class="nav-link" href="{$sitepath}/categories.php?id={$caty.catid}">{$caty.name|stripslashes}</a>
                     {/if}
                     {if $rewritemod == 1}
-                    <li class="nav-item"><span class="nav-link"
-                            href="{$sitepath}/category/{$caty.catid}/{$caty.seoname}.html">{$caty.name|stripslashes}</span>
+                    <li class="nav-item"><a class="nav-link"
+                            href="{$sitepath}/category/{$caty.catid}/{$caty.seoname}.html">{$caty.name|stripslashes}</a>
                         {/if}
                         <ul>
                             {foreach from=$subcat item=inc}
@@ -112,11 +123,28 @@
                         {/if}
             </ul>
         </div>
-
+        
     </div>
+    <div class="col-md-4" style="padding: 5px;">
+            <form action="{$sitepath}/search.php" method="GET">
+                <div class="input-group md-form form-sm form-2 pl-0">
+                    <input name="q" class="form-control my-0 py-1 amber-border" type="text" placeholder="{$lang.298}"
+                        aria-label="Search" {if $smarty.get.q|default eq false}{else}
+                        value="{$smarty.get.q|escape|default}" {/if} />
+                    <div class="input-group-append">
+                        <button type="submit" class="input-group-text amber lighten-3"> <i
+                                class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        </div>
 </nav>
-<div class="container">
+
+<!-- bottom menu -->
+<!-- <div class="container">
     <div class="row mt-3">
+    <div class="col-md-8"></div>
         <div class="col-md-8">
             <div class="menuline">
                 {nocache}{if $smarty.session.logged_in|default eq true}
@@ -141,21 +169,11 @@
                 {/foreach}{/if}
             </div>
         </div>
-        <div class="col-md-4">
-            <form action="{$sitepath}/search.php" method="GET">
-                <div class="input-group md-form form-sm form-2 pl-0">
-                    <input name="q" class="form-control my-0 py-1 amber-border" type="text" placeholder="{$lang.298}"
-                        aria-label="Search" {if $smarty.get.q|default eq false}{else}
-                        value="{$smarty.get.q|escape|default}" {/if} />
-                    <div class="input-group-append">
-                        <button type="submit" class="input-group-text amber lighten-3"> <i
-                                class="fa fa-search"></i></button>
-                    </div>
-                </div>
-            </form>
-        </div>
+        
     </div>
-</div>
+</div> -->
+
+<!-- announcements -->
 {if $newson eq 2}<div class="container mt-3">
     <div class="row">
         <div class="col-md-12 text-center">
@@ -163,18 +181,21 @@
         </div>
     </div>
 </div>{/if}
+
 <!-- live timer -->
+<!-- change the path to scripots later -->
 <script src="{$sitepath}/themes/urbanui-world-vision-ed2080d2a396/assets/js/moment.js"></script>
 <script>
     var myVar = setInterval(myTimer, 1000);
 
-function myTimer() {
-var d = moment().format('MMMM Do YYYY, h:mm:ss a');
- var time = document.getElementById("nowtime");
- time.innerHTML = d;
-}
-function myStopFunction() {
-  clearInterval(myVar);
-}
+    function myTimer() {
+        var d = moment().format('MMMM Do YYYY, h:mm:ss a');
+        var time = document.getElementById("nowtime");
+        time.innerHTML = d;
+    }
+
+    function myStopFunction() {
+        clearInterval(myVar);
+    }
 </script>
 <!-- live timer ends -->

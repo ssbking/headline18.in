@@ -17,6 +17,7 @@ if (isset($_POST['submit'])) {
         $adsoffon = stripslashes($adsoffon);
         $senseup = stripslashes($senseup);
         $sensedown = stripslashes($sensedown);
+        $sensehead = stripslashes($sensehead);
     }
     $sql = $conn->Prepare('UPDATE abcoption SET valueopt = '.$conn->qstr($adsoffon).' WHERE optionid = '.$conn->qstr("28").'');
     if ($conn->Execute($sql) === false) {
@@ -27,6 +28,10 @@ if (isset($_POST['submit'])) {
         print '<div class="error">'.$conn->ErrorMsg().'</div>';
     }
     $sql3 = $conn->Prepare('UPDATE abcoption SET valueopt = '.$conn->qstr($sensedown).' WHERE optionid = '.$conn->qstr("30").'');
+    if ($conn->Execute($sql3) === false) {
+        print '<div class="error">'.$conn->ErrorMsg().'</div>';
+    }
+    $sql4 = $conn->Prepare('UPDATE abcoption SET valueopt = '.$conn->qstr($sensehead).' WHERE optionid = '.$conn->qstr("52").'');
     if ($conn->Execute($sql3) === false) {
         print '<div class="error">'.$conn->ErrorMsg().'</div>';
     }
@@ -56,6 +61,8 @@ Google Adsense Off/On<br />
 Adsense I Responive Ad Unit<br /><textarea name="senseup"><?php echo @$senseup; ?></textarea><br /><br />
 <br /><br />
 Adsense II Responive Ad Unit<br /><textarea name="sensedown"><?php echo @$sensedown; ?></textarea><br /><br />
+<br /><br />
+Adsense III head Responive Ad Unit<br /><textarea name="sensehead"><?php echo @$sensehead; ?></textarea><br /><br />
 <br /><br />
 <input type="submit" class="topicbuton" name="submit" value="Submit" /><br /><br />
 </form>

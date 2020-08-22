@@ -52,6 +52,7 @@ $hottopic = $option[27];
 $adsoffon = $option[28];
 $senseup = $option[29];
 $sensedown = $option[30];
+$sensehead = $option[52];
 $stopspam = $option[31];
 $incitem = $option[32];
 $keypublic = $option[33];
