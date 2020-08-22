@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2020-08-22 18:41:35
+/* Smarty version 3.1.32, created on 2020-08-22 19:23:24
   from 'C:\wamp64\www\headline18\themes\world\maindir.php' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5f4166df9ad184_76736098',
+  'unifunc' => 'content_5f4170aca8bee2_02544559',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c501d4ad74832b35709a48a90056b8c9daf7e8fa' => 
     array (
       0 => 'C:\\wamp64\\www\\headline18\\themes\\world\\maindir.php',
-      1 => 1598121693,
+      1 => 1598124203,
       2 => 'file',
     ),
   ),
@@ -20,13 +20,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f4166df9ad184_76736098 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f4170aca8bee2_02544559 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\wamp64\\www\\headline18\\libs\\plugins\\modifier.replace.php','function'=>'smarty_modifier_replace',),));
 ?><!-- top menu -->
 <div class="row">
-    <div class="container d-flex justify-content-between align-items-center navbar-top"
-    style="width: 99%;background: linear-gradient(330deg, rgba(228,230,133,1) 17%, rgba(255,255,255,1) 63%);
-                padding-top: inherit;padding-bottom: inherit;">
+    <div class="container d-flex justify-content-between align-items-center navbar-top">
         <!-- logo/brand text -->
         <div class="logo">
             <?php if ($_smarty_tpl->tpl_vars['logoon']->value == '2') {?>
@@ -60,7 +58,8 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\wamp64\\www\\headline18\
 <!-- change the path to scripots later -->
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
-/themes/world/assets/js/moment.js"><?php echo '</script'; ?>
+/themes/<?php echo $_smarty_tpl->tpl_vars['themes']->value;?>
+/assets/js/moment.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
 >
@@ -119,7 +118,7 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\wamp64\\www\\headline18\
     </div>
 </div>
 
-<nav class="container navbar navbar-expand-lg navbar-dark bg-danger">
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
     <div class="row">
     <div class="col-md-8">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
@@ -248,7 +247,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     <div class="col-md-4">
             <form action="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
 /search.php" method="GET">
-                <div class="input-group md-form form-sm form-2 pl-0">
+                <div class="input-group md-form form-sm form-2 pl-0" style="padding: 2px;">
                     <input name="q" class="form-control my-0 py-1 amber-border" type="text" placeholder="<?php echo $_smarty_tpl->tpl_vars['lang']->value[298];?>
 "
                         aria-label="Search" <?php if ((($tmp = @$_GET['q'])===null||$tmp==='' ? '' : $tmp) == false) {

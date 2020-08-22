@@ -43,7 +43,7 @@
 <div class="col-md-6">
 {$gcd.date|date_format:"%A, %B %e, %Y"} {$gcd.date|timeAgo} {$lang.116}
 </div>
-<div class="col-md-6">{if $gcd.userid > '0'}{$gcd.user} {$lang.292} {else} {$lang.301} {$lang.292} {/if}
+<div class="col-md-6">
 {if $rewritemod == 1}
 <a href="{$sitepath}/category/{$gcd.idblog}/{$gcd.seoname}.html">{$gcd.idname}</a>
 {/if}
@@ -59,25 +59,37 @@
 <div class="row">
 <div class="col-md-12">
 <div class="featuredcontainer">
-{if $gcd.image neq 0}
-{if $rewritemod == 1}
-<a href="{$sitepath}/news/{$gcd.univer}/{$gcd.idblog}/{$gcd.helper}.html">
-<img class="img-fluid" src="{$sitepath}/maxthumb/{$gcd.image}" width="395" alt="{$gcd.title}" />
-</a>
-{/if}
-{if $rewritemod == 2}
-<a href="{$sitepath}/news.php?name={$gcd.univer}&amp;cat={$gcd.idblog}">
-<img class="img-fluid" src="{$sitepath}/maxthumb/{$gcd.image}" width="395" alt="{$gcd.title}" />
-</a>
-{/if}
-{/if}
-{$gcd.shortdesc|stripslashes|truncate:880}
-{if $rewritemod == 1}
-<a href="{$sitepath}/news/{$gcd.univer}/{$gcd.idblog}/{$gcd.helper}.html">{$lang.112}</a>
-{/if}
-{if $rewritemod == 2}
-<a href="{$sitepath}/news.php?name={$gcd.univer}&amp;cat={$gcd.idblog}">{$lang.112}</a>
-{/if}
+        {if $gcd.image neq 0}
+        {if $rewritemod == 1}
+        <img class="img-fluid" src="{$sitepath}/maxthumb/{$gcd.image}" width="100%" alt="{$gcd.title}" />      
+        
+        <div class="content">
+        <a href="{$sitepath}/news/{$gcd.univer}/{$gcd.idblog}/{$gcd.helper}.html">
+            <h2>{$gcd.title|stripslashes}</h2></a>
+            <p>{$gcd.brief|stripslashes}</p>
+        </div>
+        
+        {/if}
+        {if $rewritemod == 2}
+        <img class="img-fluid" src="{$sitepath}/maxthumb/{$gcd.image}" width="100%" alt="{$gcd.title}" />      
+        
+        <div class="content">
+        <a href="{$sitepath}/news/{$gcd.univer}/{$gcd.idblog}/{$gcd.helper}.html">
+            <h2>{$gcd.title|stripslashes}</h2></a>
+            <p>{$gcd.brief|stripslashes}</p>
+        </div>
+        
+        
+        {/if}
+        {/if}
+       
+    
+    {if $rewritemod == 1}
+    <a href="{$sitepath}/news/{$gcd.univer}/{$gcd.idblog}/{$gcd.helper}.html">{$lang.112}</a>
+    {/if}
+    {if $rewritemod == 2}
+    <a href="{$sitepath}/news.php?name={$gcd.univer}&amp;cat={$gcd.idblog}">{$lang.112}</a>
+    {/if}
 </div>
 </div>
 </div>
@@ -91,66 +103,78 @@
 <ol class="carousel-indicators nodisplay">
 {foreach from=$newser2 item=gcd}
 {if $gcd@index < 8}
-<li data-target="#carouselExampleSlidesOnly" data-slide-to="{$gcd@index}"{if $gcd@index == '0'} class="active"{/if}></li>
+<li class="bg-danger" data-target="#carouselExampleSlidesOnly" data-slide-to="{$gcd@index}"{if $gcd@index == '0'} class="active"{/if}></li>
 {/if}
 {/foreach}
 </ol>
 <div class="carousel-inner">
-{foreach from=$newser2 item=gcd}
-<div class="carousel-item {if $gcd@index == '0'}active{/if}">
-<div class="row">
-<div class="col-md-12">
-{if $rewritemod == 1}<h2><a href="{$sitepath}/news/{$gcd.univer}/{$gcd.idblog}/{$gcd.helper}.html">{$gcd.title|stripslashes}</a></h2>{/if}
-{if $rewritemod == 2}<h2><a href="{$sitepath}/news.php?name={$gcd.univer}&amp;cat={$gcd.idblog}">{$gcd.title|stripslashes}</a></h2>{/if}
-</div>
-</div>
-<div class="firstline">
-<div class="row">
-<div class="col-md-6">
-{$gcd.date|date_format:"%A, %B %e, %Y"} {$gcd.date|timeAgo} {$lang.116}
-</div>
-<div class="col-md-6">{if $gcd.userid > '0'}{$gcd.user} {$lang.292} {else} {$lang.301} {$lang.292} {/if}
-{if $rewritemod == 1}
-<a href="{$sitepath}/category/{$gcd.idblog}/{$gcd.seoname}.html">{$gcd.idname}</a>
-{/if}
-{if $rewritemod == 2}
-<a href="{$sitepath}/categories.php?id={$gcd.idblog}">{$gcd.idname}</a>
-{/if}
-</div>
-</div>
-</div>
-{if $gcd.brief eq true}
-<div class="row"><div class="col-md-12 mb-2"><div class="brief">{$gcd.brief|stripslashes}</div></div></div>
-{/if}
-<div class="row">
-<div class="col-md-12">
-<div class="featuredcontainer">
-{if $gcd.image neq 0}
-{if $rewritemod == 1}
-<a href="{$sitepath}/news/{$gcd.univer}/{$gcd.idblog}/{$gcd.helper}.html">
-<img class="img-fluid" src="{$sitepath}/maxthumb/{$gcd.image}" width="395" alt="{$gcd.title}" />
-</a>
-{/if}
-{if $rewritemod == 2}
-<a href="{$sitepath}/news.php?name={$gcd.univer}&amp;cat={$gcd.idblog}">
-<img class="img-fluid" src="{$sitepath}/maxthumb/{$gcd.image}" width="395" alt="{$gcd.title}" />
-</a>
-{/if}
-{/if}
-{$gcd.shortdesc|stripslashes|truncate:880}
-{if $rewritemod == 1}
-<a href="{$sitepath}/news/{$gcd.univer}/{$gcd.idblog}/{$gcd.helper}.html">{$lang.112}</a>
-{/if}
-{if $rewritemod == 2}
-<a href="{$sitepath}/news.php?name={$gcd.univer}&amp;cat={$gcd.idblog}">{$lang.112}</a>
-{/if}
-</div>
-</div>
-</div>
-</div>
-{foreachelse}
-<div class="col-md-12"><div class="alert alert-danger">{$lang.290}</div></div>
-{/foreach}
+    {foreach from=$newser2 item=gcd}
+    <div class="carousel-item {if $gcd@index == '0'}active{/if}">
+    <!-- <div class="row">
+    <div class="col-md-12">
+    {if $rewritemod == 1}<h2><a href="{$sitepath}/news/{$gcd.univer}/{$gcd.idblog}/{$gcd.helper}.html">{$gcd.title|stripslashes}</a></h2>{/if}
+    {if $rewritemod == 2}<h2><a href="{$sitepath}/news.php?name={$gcd.univer}&amp;cat={$gcd.idblog}">{$gcd.title|stripslashes}</a></h2>{/if}
+    </div>
+    </div> -->
+    <div class="firstline">
+        <div class="row">
+        <div class="col-md-6">
+        {$gcd.date|date_format:"%A, %B %e, %Y"} {$gcd.date|timeAgo} {$lang.116}
+        </div>
+        <div class="col-md-6">by Auther in 
+        {if $rewritemod == 1}
+        <a href="{$sitepath}/category/{$gcd.idblog}/{$gcd.seoname}.html">{$gcd.idname}</a>
+        {/if}
+        {if $rewritemod == 2}
+        <a href="{$sitepath}/categories.php?id={$gcd.idblog}">{$gcd.idname}</a>
+        {/if}
+        </div>
+        </div>
+    </div>
+    <!-- breaf and title over img -->
+    <!-- {if $gcd.brief eq true}
+    <div class="row"><div class="col-md-12 mb-2"><div class="brief">{$gcd.brief|stripslashes}</div></div></div>
+    {/if} -->
+
+    <div class="row">
+    <div class="col-md-12">
+    <div class="featuredcontainer">
+        {if $gcd.image neq 0}
+        {if $rewritemod == 1}
+        
+        <img class="img-fluid" src="{$sitepath}/maxthumb/{$gcd.image}" width="100%" alt="{$gcd.title}" />      
+        
+        <div class="content">
+        <a href="{$sitepath}/news/{$gcd.univer}/{$gcd.idblog}/{$gcd.helper}.html">
+            <h2>{$gcd.title|stripslashes}</h2></a>
+            <p>{$gcd.brief|stripslashes}</p>
+        </div>
+        {/if}
+        {if $rewritemod == 2}
+        <img class="img-fluid" src="{$sitepath}/maxthumb/{$gcd.image}" width="100%" alt="{$gcd.title}" />      
+        
+        <div class="content">
+        <a href="{$sitepath}/news/{$gcd.univer}/{$gcd.idblog}/{$gcd.helper}.html">
+            <h2>{$gcd.title|stripslashes}</h2></a>
+            <p>{$gcd.brief|stripslashes}</p>
+        </div>
+        {/if}
+        {/if}
+        
+    
+        {if $rewritemod == 1}
+        <a href="{$sitepath}/news/{$gcd.univer}/{$gcd.idblog}/{$gcd.helper}.html"></a>
+        {/if}
+        {if $rewritemod == 2}
+        <a href="{$sitepath}/news.php?name={$gcd.univer}&amp;cat={$gcd.idblog}">{$lang.112}</a>
+        {/if}
+    </div>
+    </div>
+    </div>
+    </div>
+    {foreachelse}
+    <div class="col-md-12"><div class="alert alert-danger">{$lang.290}</div></div>
+    {/foreach}
 </div>
 </div>
 {/if}
@@ -224,7 +248,7 @@
 <div class="col-lg-4">
 <div class="row mt-1 mb-3">
 <div class="col-md-12">
-<div class="menuliner">{$lang.122}</div>
+<div class="menuliner bg-danger"><h5>लोकप्रिय खबरे</h5></div>
 </div>
 </div>
 {foreach from=$newser|@sortby:"-#hits,#univer" item=lc}

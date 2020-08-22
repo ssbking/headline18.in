@@ -254,7 +254,7 @@
     <div class="col-lg-4">
         <div class="row mt-1 mb-3">
             <div class="col-md-12">
-                <div class="menuliner">{$lang.122}</div>
+                <div class="menuliner bg-danger"><h5>लोकप्रिय खबरे</h5></div>
             </div>
         </div>
         {foreach from=$newser|@sortby:"-#hits,#univer" item=lc}

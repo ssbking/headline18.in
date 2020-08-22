@@ -1,8 +1,6 @@
 <!-- top menu -->
 <div class="row">
-    <div class="container d-flex justify-content-between align-items-center navbar-top"
-    style="width: 99%;background: linear-gradient(330deg, rgba(228,230,133,1) 17%, rgba(255,255,255,1) 63%);
-                padding-top: inherit;padding-bottom: inherit;">
+    <div class="container d-flex justify-content-between align-items-center navbar-top">
         <!-- logo/brand text -->
         <div class="logo">
             {if $logoon == '2'}
@@ -29,7 +27,7 @@
         </ul>
 <!-- live timer -->
 <!-- change the path to scripots later -->
-<script src="{$sitepath}/themes/world/assets/js/moment.js"></script>
+<script src="{$sitepath}/themes/{$themes}/assets/js/moment.js"></script>
 <script>
     var myVar = setInterval(myTimer, 1000);
 
@@ -85,7 +83,7 @@
     </div>
 </div>
 
-<nav class="container navbar navbar-expand-lg navbar-dark bg-danger">
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
     <div class="row">
     <div class="col-md-8">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
@@ -150,7 +148,7 @@
 
     <div class="col-md-4">
             <form action="{$sitepath}/search.php" method="GET">
-                <div class="input-group md-form form-sm form-2 pl-0">
+                <div class="input-group md-form form-sm form-2 pl-0" style="padding: 2px;">
                     <input name="q" class="form-control my-0 py-1 amber-border" type="text" placeholder="{$lang.298}"
                         aria-label="Search" {if $smarty.get.q|default eq false}{else}
                         value="{$smarty.get.q|escape|default}" {/if} />

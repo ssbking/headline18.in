@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2020-08-22 17:02:54
+/* Smarty version 3.1.32, created on 2020-08-22 20:05:30
   from 'C:\wamp64\www\headline18\themes\world\categories.php' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5f414fbee72189_63940632',
+  'unifunc' => 'content_5f417a8aef8d63_46582587',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd4d3f20ec7895bc7674d62acc91069d535f325d7' => 
     array (
       0 => 'C:\\wamp64\\www\\headline18\\themes\\world\\categories.php',
-      1 => 1598096935,
+      1 => 1598126724,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:themes/".((string)$_smarty_tpl->tpl_vars[\'themes\']->value)."/footer.php' => 1,
   ),
 ),false)) {
-function content_5f414fbee72189_63940632 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f417a8aef8d63_46582587 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\wamp64\\www\\headline18\\libs\\plugins\\modifier.date_format.php','function'=>'smarty_modifier_date_format',),1=>array('file'=>'C:\\wamp64\\www\\headline18\\libs\\plugins\\modifier.timeAgo.php','function'=>'smarty_modifier_timeAgo',),2=>array('file'=>'C:\\wamp64\\www\\headline18\\libs\\plugins\\modifier.truncate.php','function'=>'smarty_modifier_truncate',),3=>array('file'=>'C:\\wamp64\\www\\headline18\\libs\\plugins\\modifier.sortby.php','function'=>'smarty_modifier_sortby',),4=>array('file'=>'C:\\wamp64\\www\\headline18\\libs\\plugins\\function.counter.php','function'=>'smarty_function_counter',),));
 ?><!DOCTYPE html>
 <html lang="en">
@@ -520,8 +520,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     <div class="col-lg-4">
         <div class="row mt-1 mb-3">
             <div class="col-md-12">
-                <div class="menuliner"><?php echo $_smarty_tpl->tpl_vars['lang']->value[122];?>
-</div>
+                <div class="menuliner bg-danger"><h5>लोकप्रिय खबरे</h5></div>
             </div>
         </div>
         <?php

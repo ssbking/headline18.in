@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2020-08-22 17:05:23
+/* Smarty version 3.1.32, created on 2020-08-22 21:31:38
   from 'C:\wamp64\www\headline18\themes\world\main.php' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5f4150532baac3_23292343',
+  'unifunc' => 'content_5f418eba064d42_45445215',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'f1dd56e94f066c739179cc573148b58e5a555df1' => 
     array (
       0 => 'C:\\wamp64\\www\\headline18\\themes\\world\\main.php',
-      1 => 1598115919,
+      1 => 1598131896,
       2 => 'file',
     ),
   ),
@@ -22,7 +22,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:themes/".((string)$_smarty_tpl->tpl_vars[\'themes\']->value)."/footer.php' => 1,
   ),
 ),false)) {
-function content_5f4150532baac3_23292343 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f418eba064d42_45445215 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\wamp64\\www\\headline18\\libs\\plugins\\modifier.date_format.php','function'=>'smarty_modifier_date_format',),1=>array('file'=>'C:\\wamp64\\www\\headline18\\libs\\plugins\\modifier.timeAgo.php','function'=>'smarty_modifier_timeAgo',),2=>array('file'=>'C:\\wamp64\\www\\headline18\\libs\\plugins\\modifier.truncate.php','function'=>'smarty_modifier_truncate',),3=>array('file'=>'C:\\wamp64\\www\\headline18\\libs\\plugins\\modifier.sortby.php','function'=>'smarty_modifier_sortby',),4=>array('file'=>'C:\\wamp64\\www\\headline18\\libs\\plugins\\function.counter.php','function'=>'smarty_function_counter',),));
 ?><!DOCTYPE html>
 <html lang="en">
@@ -103,13 +103,8 @@ if ($_smarty_tpl->tpl_vars['rewritemod']->value == 2) {?><h2><a href="<?php echo
  <?php echo $_smarty_tpl->tpl_vars['lang']->value[116];?>
 
 </div>
-<div class="col-md-6"><?php if ($_smarty_tpl->tpl_vars['gcd']->value['userid'] > '0') {
-echo $_smarty_tpl->tpl_vars['gcd']->value['user'];?>
- <?php echo $_smarty_tpl->tpl_vars['lang']->value[292];?>
- <?php } else { ?> <?php echo $_smarty_tpl->tpl_vars['lang']->value[301];?>
- <?php echo $_smarty_tpl->tpl_vars['lang']->value[292];?>
- <?php }
-if ($_smarty_tpl->tpl_vars['rewritemod']->value == 1) {?>
+<div class="col-md-6">
+<?php if ($_smarty_tpl->tpl_vars['rewritemod']->value == 1) {?>
 <a href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
 /category/<?php echo $_smarty_tpl->tpl_vars['gcd']->value['idblog'];?>
 /<?php echo $_smarty_tpl->tpl_vars['gcd']->value['seoname'];?>
@@ -132,48 +127,64 @@ if ($_smarty_tpl->tpl_vars['rewritemod']->value == 2) {?>
 <div class="row">
 <div class="col-md-12">
 <div class="featuredcontainer">
-<?php if ($_smarty_tpl->tpl_vars['gcd']->value['image'] != 0) {
-if ($_smarty_tpl->tpl_vars['rewritemod']->value == 1) {?>
-<a href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
+        <?php if ($_smarty_tpl->tpl_vars['gcd']->value['image'] != 0) {?>
+        <?php if ($_smarty_tpl->tpl_vars['rewritemod']->value == 1) {?>
+        <img class="img-fluid" src="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
+/maxthumb/<?php echo $_smarty_tpl->tpl_vars['gcd']->value['image'];?>
+" width="100%" alt="<?php echo $_smarty_tpl->tpl_vars['gcd']->value['title'];?>
+" />      
+        
+        <div class="content">
+        <a href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
 /news/<?php echo $_smarty_tpl->tpl_vars['gcd']->value['univer'];?>
 /<?php echo $_smarty_tpl->tpl_vars['gcd']->value['idblog'];?>
 /<?php echo $_smarty_tpl->tpl_vars['gcd']->value['helper'];?>
 .html">
-<img class="img-fluid" src="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
+            <h2><?php echo stripslashes($_smarty_tpl->tpl_vars['gcd']->value['title']);?>
+</h2></a>
+            <p><?php echo stripslashes($_smarty_tpl->tpl_vars['gcd']->value['brief']);?>
+</p>
+        </div>
+        
+        <?php }?>
+        <?php if ($_smarty_tpl->tpl_vars['rewritemod']->value == 2) {?>
+        <img class="img-fluid" src="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
 /maxthumb/<?php echo $_smarty_tpl->tpl_vars['gcd']->value['image'];?>
-" width="395" alt="<?php echo $_smarty_tpl->tpl_vars['gcd']->value['title'];?>
-" />
-</a>
-<?php }
-if ($_smarty_tpl->tpl_vars['rewritemod']->value == 2) {?>
-<a href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
-/news.php?name=<?php echo $_smarty_tpl->tpl_vars['gcd']->value['univer'];?>
-&amp;cat=<?php echo $_smarty_tpl->tpl_vars['gcd']->value['idblog'];?>
-">
-<img class="img-fluid" src="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
-/maxthumb/<?php echo $_smarty_tpl->tpl_vars['gcd']->value['image'];?>
-" width="395" alt="<?php echo $_smarty_tpl->tpl_vars['gcd']->value['title'];?>
-" />
-</a>
-<?php }
-}
-echo smarty_modifier_truncate(stripslashes($_smarty_tpl->tpl_vars['gcd']->value['shortdesc']),880);?>
-
-<?php if ($_smarty_tpl->tpl_vars['rewritemod']->value == 1) {?>
-<a href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
+" width="100%" alt="<?php echo $_smarty_tpl->tpl_vars['gcd']->value['title'];?>
+" />      
+        
+        <div class="content">
+        <a href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
+/news/<?php echo $_smarty_tpl->tpl_vars['gcd']->value['univer'];?>
+/<?php echo $_smarty_tpl->tpl_vars['gcd']->value['idblog'];?>
+/<?php echo $_smarty_tpl->tpl_vars['gcd']->value['helper'];?>
+.html">
+            <h2><?php echo stripslashes($_smarty_tpl->tpl_vars['gcd']->value['title']);?>
+</h2></a>
+            <p><?php echo stripslashes($_smarty_tpl->tpl_vars['gcd']->value['brief']);?>
+</p>
+        </div>
+        
+        
+        <?php }?>
+        <?php }?>
+       
+    
+    <?php if ($_smarty_tpl->tpl_vars['rewritemod']->value == 1) {?>
+    <a href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
 /news/<?php echo $_smarty_tpl->tpl_vars['gcd']->value['univer'];?>
 /<?php echo $_smarty_tpl->tpl_vars['gcd']->value['idblog'];?>
 /<?php echo $_smarty_tpl->tpl_vars['gcd']->value['helper'];?>
 .html"><?php echo $_smarty_tpl->tpl_vars['lang']->value[112];?>
 </a>
-<?php }
-if ($_smarty_tpl->tpl_vars['rewritemod']->value == 2) {?>
-<a href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
+    <?php }?>
+    <?php if ($_smarty_tpl->tpl_vars['rewritemod']->value == 2) {?>
+    <a href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
 /news.php?name=<?php echo $_smarty_tpl->tpl_vars['gcd']->value['univer'];?>
 &amp;cat=<?php echo $_smarty_tpl->tpl_vars['gcd']->value['idblog'];?>
 "><?php echo $_smarty_tpl->tpl_vars['lang']->value[112];?>
 </a>
-<?php }?>
+    <?php }?>
 </div>
 </div>
 </div>
@@ -200,7 +211,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['gcd']->value) {
 $_smarty_tpl->tpl_vars['gcd']->index++;
 $__foreach_gcd_1_saved = $_smarty_tpl->tpl_vars['gcd'];
 if ($_smarty_tpl->tpl_vars['gcd']->index < 8) {?>
-<li data-target="#carouselExampleSlidesOnly" data-slide-to="<?php echo $_smarty_tpl->tpl_vars['gcd']->index;?>
+<li class="bg-danger" data-target="#carouselExampleSlidesOnly" data-slide-to="<?php echo $_smarty_tpl->tpl_vars['gcd']->index;?>
 "<?php if ($_smarty_tpl->tpl_vars['gcd']->index == '0') {?> class="active"<?php }?>></li>
 <?php }
 $_smarty_tpl->tpl_vars['gcd'] = $__foreach_gcd_1_saved;
@@ -209,7 +220,7 @@ $_smarty_tpl->tpl_vars['gcd'] = $__foreach_gcd_1_saved;
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 </ol>
 <div class="carousel-inner">
-<?php
+    <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['newser2']->value, 'gcd');
 $_smarty_tpl->tpl_vars['gcd']->index = -1;
 if ($_from !== null) {
@@ -217,113 +228,123 @@ foreach ($_from as $_smarty_tpl->tpl_vars['gcd']->value) {
 $_smarty_tpl->tpl_vars['gcd']->index++;
 $__foreach_gcd_2_saved = $_smarty_tpl->tpl_vars['gcd'];
 ?>
-<div class="carousel-item <?php if ($_smarty_tpl->tpl_vars['gcd']->index == '0') {?>active<?php }?>">
-<div class="row">
-<div class="col-md-12">
-<?php if ($_smarty_tpl->tpl_vars['rewritemod']->value == 1) {?><h2><a href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
+    <div class="carousel-item <?php if ($_smarty_tpl->tpl_vars['gcd']->index == '0') {?>active<?php }?>">
+    <!-- <div class="row">
+    <div class="col-md-12">
+    <?php if ($_smarty_tpl->tpl_vars['rewritemod']->value == 1) {?><h2><a href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
 /news/<?php echo $_smarty_tpl->tpl_vars['gcd']->value['univer'];?>
 /<?php echo $_smarty_tpl->tpl_vars['gcd']->value['idblog'];?>
 /<?php echo $_smarty_tpl->tpl_vars['gcd']->value['helper'];?>
 .html"><?php echo stripslashes($_smarty_tpl->tpl_vars['gcd']->value['title']);?>
-</a></h2><?php }
-if ($_smarty_tpl->tpl_vars['rewritemod']->value == 2) {?><h2><a href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
+</a></h2><?php }?>
+    <?php if ($_smarty_tpl->tpl_vars['rewritemod']->value == 2) {?><h2><a href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
 /news.php?name=<?php echo $_smarty_tpl->tpl_vars['gcd']->value['univer'];?>
 &amp;cat=<?php echo $_smarty_tpl->tpl_vars['gcd']->value['idblog'];?>
 "><?php echo stripslashes($_smarty_tpl->tpl_vars['gcd']->value['title']);?>
 </a></h2><?php }?>
-</div>
-</div>
-<div class="firstline">
-<div class="row">
-<div class="col-md-6">
-<?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['gcd']->value['date'],"%A, %B %e, %Y");?>
+    </div>
+    </div> -->
+    <div class="firstline">
+        <div class="row">
+        <div class="col-md-6">
+        <?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['gcd']->value['date'],"%A, %B %e, %Y");?>
  <?php echo smarty_modifier_timeAgo($_smarty_tpl->tpl_vars['gcd']->value['date']);?>
  <?php echo $_smarty_tpl->tpl_vars['lang']->value[116];?>
 
-</div>
-<div class="col-md-6"><?php if ($_smarty_tpl->tpl_vars['gcd']->value['userid'] > '0') {
-echo $_smarty_tpl->tpl_vars['gcd']->value['user'];?>
- <?php echo $_smarty_tpl->tpl_vars['lang']->value[292];?>
- <?php } else { ?> <?php echo $_smarty_tpl->tpl_vars['lang']->value[301];?>
- <?php echo $_smarty_tpl->tpl_vars['lang']->value[292];?>
- <?php }
-if ($_smarty_tpl->tpl_vars['rewritemod']->value == 1) {?>
-<a href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
+        </div>
+        <div class="col-md-6">by Auther in 
+        <?php if ($_smarty_tpl->tpl_vars['rewritemod']->value == 1) {?>
+        <a href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
 /category/<?php echo $_smarty_tpl->tpl_vars['gcd']->value['idblog'];?>
 /<?php echo $_smarty_tpl->tpl_vars['gcd']->value['seoname'];?>
 .html"><?php echo $_smarty_tpl->tpl_vars['gcd']->value['idname'];?>
 </a>
-<?php }
-if ($_smarty_tpl->tpl_vars['rewritemod']->value == 2) {?>
-<a href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
+        <?php }?>
+        <?php if ($_smarty_tpl->tpl_vars['rewritemod']->value == 2) {?>
+        <a href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
 /categories.php?id=<?php echo $_smarty_tpl->tpl_vars['gcd']->value['idblog'];?>
 "><?php echo $_smarty_tpl->tpl_vars['gcd']->value['idname'];?>
 </a>
-<?php }?>
-</div>
-</div>
-</div>
-<?php if ($_smarty_tpl->tpl_vars['gcd']->value['brief'] == true) {?>
-<div class="row"><div class="col-md-12 mb-2"><div class="brief"><?php echo stripslashes($_smarty_tpl->tpl_vars['gcd']->value['brief']);?>
+        <?php }?>
+        </div>
+        </div>
+    </div>
+    <!-- breaf and title over img -->
+    <!-- <?php if ($_smarty_tpl->tpl_vars['gcd']->value['brief'] == true) {?>
+    <div class="row"><div class="col-md-12 mb-2"><div class="brief"><?php echo stripslashes($_smarty_tpl->tpl_vars['gcd']->value['brief']);?>
 </div></div></div>
-<?php }?>
-<div class="row">
-<div class="col-md-12">
-<div class="featuredcontainer">
-<?php if ($_smarty_tpl->tpl_vars['gcd']->value['image'] != 0) {
-if ($_smarty_tpl->tpl_vars['rewritemod']->value == 1) {?>
-<a href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
+    <?php }?> -->
+
+    <div class="row">
+    <div class="col-md-12">
+    <div class="featuredcontainer">
+        <?php if ($_smarty_tpl->tpl_vars['gcd']->value['image'] != 0) {?>
+        <?php if ($_smarty_tpl->tpl_vars['rewritemod']->value == 1) {?>
+        
+        <img class="img-fluid" src="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
+/maxthumb/<?php echo $_smarty_tpl->tpl_vars['gcd']->value['image'];?>
+" width="100%" alt="<?php echo $_smarty_tpl->tpl_vars['gcd']->value['title'];?>
+" />      
+        
+        <div class="content">
+        <a href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
 /news/<?php echo $_smarty_tpl->tpl_vars['gcd']->value['univer'];?>
 /<?php echo $_smarty_tpl->tpl_vars['gcd']->value['idblog'];?>
 /<?php echo $_smarty_tpl->tpl_vars['gcd']->value['helper'];?>
 .html">
-<img class="img-fluid" src="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
+            <h2><?php echo stripslashes($_smarty_tpl->tpl_vars['gcd']->value['title']);?>
+</h2></a>
+            <p><?php echo stripslashes($_smarty_tpl->tpl_vars['gcd']->value['brief']);?>
+</p>
+        </div>
+        <?php }?>
+        <?php if ($_smarty_tpl->tpl_vars['rewritemod']->value == 2) {?>
+        <img class="img-fluid" src="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
 /maxthumb/<?php echo $_smarty_tpl->tpl_vars['gcd']->value['image'];?>
-" width="395" alt="<?php echo $_smarty_tpl->tpl_vars['gcd']->value['title'];?>
-" />
-</a>
-<?php }
-if ($_smarty_tpl->tpl_vars['rewritemod']->value == 2) {?>
-<a href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
-/news.php?name=<?php echo $_smarty_tpl->tpl_vars['gcd']->value['univer'];?>
-&amp;cat=<?php echo $_smarty_tpl->tpl_vars['gcd']->value['idblog'];?>
-">
-<img class="img-fluid" src="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
-/maxthumb/<?php echo $_smarty_tpl->tpl_vars['gcd']->value['image'];?>
-" width="395" alt="<?php echo $_smarty_tpl->tpl_vars['gcd']->value['title'];?>
-" />
-</a>
-<?php }
-}
-echo smarty_modifier_truncate(stripslashes($_smarty_tpl->tpl_vars['gcd']->value['shortdesc']),880);?>
-
-<?php if ($_smarty_tpl->tpl_vars['rewritemod']->value == 1) {?>
-<a href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
+" width="100%" alt="<?php echo $_smarty_tpl->tpl_vars['gcd']->value['title'];?>
+" />      
+        
+        <div class="content">
+        <a href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
 /news/<?php echo $_smarty_tpl->tpl_vars['gcd']->value['univer'];?>
 /<?php echo $_smarty_tpl->tpl_vars['gcd']->value['idblog'];?>
 /<?php echo $_smarty_tpl->tpl_vars['gcd']->value['helper'];?>
-.html"><?php echo $_smarty_tpl->tpl_vars['lang']->value[112];?>
-</a>
-<?php }
-if ($_smarty_tpl->tpl_vars['rewritemod']->value == 2) {?>
-<a href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
+.html">
+            <h2><?php echo stripslashes($_smarty_tpl->tpl_vars['gcd']->value['title']);?>
+</h2></a>
+            <p><?php echo stripslashes($_smarty_tpl->tpl_vars['gcd']->value['brief']);?>
+</p>
+        </div>
+        <?php }?>
+        <?php }?>
+        
+    
+        <?php if ($_smarty_tpl->tpl_vars['rewritemod']->value == 1) {?>
+        <a href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
+/news/<?php echo $_smarty_tpl->tpl_vars['gcd']->value['univer'];?>
+/<?php echo $_smarty_tpl->tpl_vars['gcd']->value['idblog'];?>
+/<?php echo $_smarty_tpl->tpl_vars['gcd']->value['helper'];?>
+.html"></a>
+        <?php }?>
+        <?php if ($_smarty_tpl->tpl_vars['rewritemod']->value == 2) {?>
+        <a href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
 /news.php?name=<?php echo $_smarty_tpl->tpl_vars['gcd']->value['univer'];?>
 &amp;cat=<?php echo $_smarty_tpl->tpl_vars['gcd']->value['idblog'];?>
 "><?php echo $_smarty_tpl->tpl_vars['lang']->value[112];?>
 </a>
-<?php }?>
-</div>
-</div>
-</div>
-</div>
-<?php
+        <?php }?>
+    </div>
+    </div>
+    </div>
+    </div>
+    <?php
 $_smarty_tpl->tpl_vars['gcd'] = $__foreach_gcd_2_saved;
 }
 } else {
 ?>
-<div class="col-md-12"><div class="alert alert-danger"><?php echo $_smarty_tpl->tpl_vars['lang']->value[290];?>
+    <div class="col-md-12"><div class="alert alert-danger"><?php echo $_smarty_tpl->tpl_vars['lang']->value[290];?>
 </div></div>
-<?php
+    <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 </div>
@@ -478,8 +499,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 <div class="col-lg-4">
 <div class="row mt-1 mb-3">
 <div class="col-md-12">
-<div class="menuliner"><?php echo $_smarty_tpl->tpl_vars['lang']->value[122];?>
-</div>
+<div class="menuliner bg-danger"><h5>लोकप्रिय खबरे</h5></div>
 </div>
 </div>
 <?php

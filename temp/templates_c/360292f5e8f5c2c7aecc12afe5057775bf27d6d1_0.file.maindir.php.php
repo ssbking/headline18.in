@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2020-08-22 17:19:58
+/* Smarty version 3.1.32, created on 2020-08-22 18:59:27
   from 'C:\wamp64\www\headline18\themes\classic\maindir.php' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5f4153be292797_69051405',
+  'unifunc' => 'content_5f416b0f7fb857_51063712',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '360292f5e8f5c2c7aecc12afe5057775bf27d6d1' => 
     array (
       0 => 'C:\\wamp64\\www\\headline18\\themes\\classic\\maindir.php',
-      1 => 1598114280,
+      1 => 1598122498,
       2 => 'file',
     ),
   ),
@@ -20,14 +20,14 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f4153be292797_69051405 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f416b0f7fb857_51063712 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\wamp64\\www\\headline18\\libs\\plugins\\modifier.replace.php','function'=>'smarty_modifier_replace',),));
 ?><!-- top menu -->
-<div class="row">
-    <div class=" d-flex justify-content-between align-items-center navbar-top" style="width: 100%;background: rgb(228,230,133);
-                background: linear-gradient(330deg, rgba(228,230,133,1) 17%, rgba(255,255,255,1) 63%); color: #242F5C;padding-top: inherit; padding-bottom: inherit;">
-          <!-- logo/brand text -->
-          <div class="logo">
+<div class="row" style="width: 103%;background: linear-gradient(330deg, rgba(228,230,133,1) 17%, rgba(255,255,255,1) 63%);
+                padding-top: inherit;padding-bottom: inherit;">
+    <div class="container d-flex justify-content-between align-items-center navbar-top">
+        <!-- logo/brand text -->
+        <div class="logo">
             <?php if ($_smarty_tpl->tpl_vars['logoon']->value == '2') {?>
             <a class="navbar-brand" href="/"><?php echo $_smarty_tpl->tpl_vars['logotext']->value;?>
 </a>
@@ -37,17 +37,46 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\wamp64\\www\\headline18\
 /themes/<?php echo $_smarty_tpl->tpl_vars['themes']->value;?>
 /styles/images/newlogo.jpeg"
                     alt="<?php echo $_smarty_tpl->tpl_vars['sitetitle']->value;?>
-" width="200" height="55"  style="padding-left: 18px;"></a>
+" width="200" height="55" style="padding-left: 18px;"></a>
             <?php }?>
         </div>
         <!-- logo ends  -->
+        <?php if ($_smarty_tpl->tpl_vars['adsoffon']->value == 2) {?>
+        <div class="row mt-4 mb-3 text-center">
+<div class="col-md-12">
+<?php echo $_smarty_tpl->tpl_vars['sensehead']->value;?>
+
+</div>
+</div>
+<?php }?>
         <ul class="navbar-left">
             <li>
                 <p id="nowtime"></p>
-                </li>
+            </li>
             <!-- <li>30°C,London</li> -->
         </ul>
-      
+<!-- live timer -->
+<!-- change the path to scripots later -->
+<?php echo '<script'; ?>
+ src="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
+/themes/world/assets/js/moment.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+>
+    var myVar = setInterval(myTimer, 1000);
+
+    function myTimer() {
+        var d = moment().format('MMMM Do YYYY, h:mm:ss a');
+        var time = document.getElementById("nowtime");
+        time.innerHTML = d;
+    }
+
+    function myStopFunction() {
+        clearInterval(myVar);
+    }
+<?php echo '</script'; ?>
+>
+<!-- live timer ends -->
 
         <div class="d-flex">
             <ul class="navbar-right">
@@ -57,9 +86,8 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\wamp64\\www\\headline18\
                 <li>
                     <a href="#">मराठी</a>
                 </li>
-               
-                </ul>
-                <ul class="social-media">
+
+
                 <li>
                     <a href="#">
                         <i class="fa fa-instagram"></i>
@@ -89,31 +117,30 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\wamp64\\www\\headline18\
         </div>
     </div>
 </div>
-<!-- middle menu -->
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
     <div class="row">
-    
-    <div class="col-md-8" id="thisnav">
+    <div class="col-md-8">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <a class="navbar-toggler-icon"></a>
+            <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse justify-content-between align-items-center" id="navbarNavAltMarkup">
-            <ul id="coolMenu" class="nav navbar-nav">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <ul id="coolMenu" class="nav navbar-nav ml-auto">
                 <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['categori']->value, 'caty', true);
 $_smarty_tpl->tpl_vars['caty']->index = -1;
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['caty']->value) {
 $_smarty_tpl->tpl_vars['caty']->index++;
-$__foreach_caty_7_saved = $_smarty_tpl->tpl_vars['caty'];
+$__foreach_caty_0_saved = $_smarty_tpl->tpl_vars['caty'];
 ?>
                 <?php $_smarty_tpl->_assignInScope('ifavaible', $_smarty_tpl->tpl_vars['caty']->total);?>
                 <?php ob_start();
 echo $_smarty_tpl->tpl_vars['toplinks']->value;
 $_prefixVariable1 = ob_get_clean();
-if ($_smarty_tpl->tpl_vars['caty']->index < $_prefixVariable1) {?> <?php if ($_smarty_tpl->tpl_vars['rewritemod']->value == 2) {?> <li class="nav-item">
-                    <a class="nav-link" href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
+if ($_smarty_tpl->tpl_vars['caty']->index < $_prefixVariable1) {?> <?php if ($_smarty_tpl->tpl_vars['rewritemod']->value == 2) {?> <li class="nav-item"><a class="nav-link"
+                        href="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
 /categories.php?id=<?php echo $_smarty_tpl->tpl_vars['caty']->value['catid'];?>
 "><?php echo stripslashes($_smarty_tpl->tpl_vars['caty']->value['name']);?>
 </a>
@@ -159,7 +186,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     </li>
                     <?php }?>
                     <?php
-$_smarty_tpl->tpl_vars['caty'] = $__foreach_caty_7_saved;
+$_smarty_tpl->tpl_vars['caty'] = $__foreach_caty_0_saved;
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
@@ -176,7 +203,7 @@ $_smarty_tpl->tpl_vars['morecat']->index = -1;
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['morecat']->value) {
 $_smarty_tpl->tpl_vars['morecat']->index++;
-$__foreach_morecat_9_saved = $_smarty_tpl->tpl_vars['morecat'];
+$__foreach_morecat_2_saved = $_smarty_tpl->tpl_vars['morecat'];
 ?>
                             <?php ob_start();
 echo $_smarty_tpl->tpl_vars['toplinks']->value;
@@ -201,7 +228,7 @@ if ($_smarty_tpl->tpl_vars['morecat']->value['cord'] == 0 && $_smarty_tpl->tpl_v
                                 <?php }?>
                                 <?php }?>
                                 <?php
-$_smarty_tpl->tpl_vars['morecat'] = $__foreach_morecat_9_saved;
+$_smarty_tpl->tpl_vars['morecat'] = $__foreach_morecat_2_saved;
 }
 } else {
 ?>
@@ -214,12 +241,13 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                         <?php }?>
             </ul>
         </div>
-        
     </div>
-    <div class="col-md-4" style="padding: 5px;">
+
+
+    <div class="col-md-4">
             <form action="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
 /search.php" method="GET">
-                <div class="input-group md-form form-sm form-2 pl-0">
+                <div class="input-group md-form form-sm form-2 pl-0" style="padding: 2px;">
                     <input name="q" class="form-control my-0 py-1 amber-border" type="text" placeholder="<?php echo $_smarty_tpl->tpl_vars['lang']->value[298];?>
 "
                         aria-label="Search" <?php if ((($tmp = @$_GET['q'])===null||$tmp==='' ? '' : $tmp) == false) {
@@ -233,13 +261,12 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 </div>
             </form>
         </div>
-        </div>
-</nav>
 
-<!-- bottom menu -->
+
+    </div>
+</nav>
 <!-- <div class="container">
     <div class="row mt-3">
-    <div class="col-md-8"></div>
         <div class="col-md-8">
             <div class="menuline">
                 <?php if ((($tmp = @$_SESSION['logged_in'])===null||$tmp==='' ? '' : $tmp) == true) {?>
@@ -290,11 +317,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);
 }?>
             </div>
         </div>
-        
+      
     </div>
 </div> -->
-
-<!-- announcements -->
 <?php if ($_smarty_tpl->tpl_vars['newson']->value == 2) {?><div class="container mt-3">
     <div class="row">
         <div class="col-md-12 text-center">
@@ -302,28 +327,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);
 </div>
         </div>
     </div>
-</div><?php }?>
-
-<!-- live timer -->
-<!-- change the path to scripots later -->
-<?php echo '<script'; ?>
- src="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
-/themes/urbanui-world-vision-ed2080d2a396/assets/js/moment.js"><?php echo '</script'; ?>
->
-<?php echo '<script'; ?>
->
-    var myVar = setInterval(myTimer, 1000);
-
-    function myTimer() {
-        var d = moment().format('MMMM Do YYYY, h:mm:ss a');
-        var time = document.getElementById("nowtime");
-        time.innerHTML = d;
-    }
-
-    function myStopFunction() {
-        clearInterval(myVar);
-    }
-<?php echo '</script'; ?>
->
-<!-- live timer ends --><?php }
+</div><?php }
+}
 }
