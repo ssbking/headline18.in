@@ -65,9 +65,11 @@ class Smarty_Internal_Runtime_UpdateCache
      *
      * @throws \SmartyException
      */
-    public function removeNoCacheHash(Smarty_Template_Cached $cached,
-                                      Smarty_Internal_Template $_template,
-                                      $no_output_filter)
+    public function removeNoCacheHash(
+        Smarty_Template_Cached $cached,
+        Smarty_Internal_Template $_template,
+        $no_output_filter
+    )
     {
         $php_pattern = '/(<%|%>|<\?php|<\?|\?>|<script\s+language\s*=\s*[\"\']?\s*php\s*[\"\']?\s*>)/';
         $content = ob_get_clean();
@@ -78,22 +80,30 @@ class Smarty_Internal_Runtime_UpdateCache
         $_template->cached->has_nocache_code = false;
         // get text between non-cached items
         $cache_split =
-            preg_split("!/\*%%SmartyNocache:{$nocache_hash}%%\*\/(.+?)/\*/%%SmartyNocache:{$nocache_hash}%%\*/!s",
-                       $content);
+            preg_split(
+                "!/\*%%SmartyNocache:{$nocache_hash}%%\*\/(.+?)/\*/%%SmartyNocache:{$nocache_hash}%%\*/!s",
+                $content
+            );
         // get non-cached items
-        preg_match_all("!/\*%%SmartyNocache:{$nocache_hash}%%\*\/(.+?)/\*/%%SmartyNocache:{$nocache_hash}%%\*/!s",
-                       $content,
-                       $cache_parts);
+        preg_match_all(
+            "!/\*%%SmartyNocache:{$nocache_hash}%%\*\/(.+?)/\*/%%SmartyNocache:{$nocache_hash}%%\*/!s",
+            $content,
+            $cache_parts
+        );
         $content = '';
         // loop over items, stitch back together
         foreach ($cache_split as $curr_idx => $curr_split) {
             if (preg_match($php_pattern, $curr_split)) {
                 // escape PHP tags in template content
-                $php_split = preg_split($php_pattern,
-                                        $curr_split);
-                preg_match_all($php_pattern,
-                               $curr_split,
-                               $php_parts);
+                $php_split = preg_split(
+                    $php_pattern,
+                    $curr_split
+                );
+                preg_match_all(
+                    $php_pattern,
+                    $curr_split,
+                    $php_parts
+                );
                 foreach ($php_split as $idx_php => $curr_php) {
                     $content .= $curr_php;
                     if (isset($php_parts[ 0 ][ $idx_php ])) {

@@ -34,8 +34,15 @@ class Smarty_Internal_Runtime_Foreach
      *
      * @return mixed $from
      */
-    public function init(Smarty_Internal_Template $tpl, $from, $item, $needTotal = false, $key = null, $name = null,
-                         $properties = array())
+    public function init(
+        Smarty_Internal_Template $tpl,
+        $from,
+        $item,
+        $needTotal = false,
+        $key = null,
+        $name = null,
+        $properties = array()
+    )
     {
         $saveVars = array();
         $total = null;
@@ -147,5 +154,4 @@ class Smarty_Internal_Runtime_Foreach
             $levels --;
         }
     }
-
 }

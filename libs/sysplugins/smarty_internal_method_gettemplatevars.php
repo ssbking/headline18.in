@@ -31,8 +31,12 @@ class Smarty_Internal_Method_GetTemplateVars
      *
      * @return mixed variable value or or array of variables
      */
-    public function getTemplateVars(Smarty_Internal_Data $data, $varName = null, Smarty_Internal_Data $_ptr = null,
-                                    $searchParents = true)
+    public function getTemplateVars(
+        Smarty_Internal_Data $data,
+        $varName = null,
+        Smarty_Internal_Data $_ptr = null,
+        $searchParents = true
+    )
     {
         if (isset($varName)) {
             $_var = $this->_getVariable($data, $varName, $_ptr, $searchParents, false);
@@ -47,7 +51,7 @@ class Smarty_Internal_Method_GetTemplateVars
                 $_ptr = $data;
             }
             while ($_ptr !== null) {
-                foreach ($_ptr->tpl_vars AS $key => $var) {
+                foreach ($_ptr->tpl_vars as $key => $var) {
                     if (!array_key_exists($key, $_result)) {
                         $_result[ $key ] = $var->value;
                     }
@@ -60,7 +64,7 @@ class Smarty_Internal_Method_GetTemplateVars
                 }
             }
             if ($searchParents && isset(Smarty::$global_tpl_vars)) {
-                foreach (Smarty::$global_tpl_vars AS $key => $var) {
+                foreach (Smarty::$global_tpl_vars as $key => $var) {
                     if (!array_key_exists($key, $_result)) {
                         $_result[ $key ] = $var->value;
                     }
@@ -81,8 +85,13 @@ class Smarty_Internal_Method_GetTemplateVars
      *
      * @return \Smarty_Variable
      */
-    public function _getVariable(Smarty_Internal_Data $data, $varName, Smarty_Internal_Data $_ptr = null,
-                                 $searchParents = true, $errorEnable = true)
+    public function _getVariable(
+        Smarty_Internal_Data $data,
+        $varName,
+        Smarty_Internal_Data $_ptr = null,
+        $searchParents = true,
+        $errorEnable = true
+    )
     {
         if ($_ptr === null) {
             $_ptr = $data;

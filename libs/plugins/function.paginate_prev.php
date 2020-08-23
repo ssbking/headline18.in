@@ -26,7 +26,8 @@
  * @version 1.6-dev
  */
 
-function smarty_function_paginate_prev($params, &$smarty) {
+function smarty_function_paginate_prev($params, &$smarty)
+{
     global $sitepath;
     @$id = $_GET['id'];
     @$q = $_GET['q'];
@@ -39,49 +40,47 @@ function smarty_function_paginate_prev($params, &$smarty) {
     }
     if (!isset($_SESSION['SmartyPaginate'])) {
         $smarty->trigger_error("paginate_prev: SmartyPaginate is not initialized, use connect() first");
-        return;        
+        return;
     }
 
-    foreach($params as $_key => $_val) {
-        switch($_key) {
+    foreach ($params as $_key => $_val) {
+        switch ($_key) {
             case 'id':
                 if (!SmartyPaginate::isConnected($_val)) {
                     $smarty->trigger_error("paginate_prev: unknown id '$_val'");
-                    return;        
+                    return;
                 }
                 $_id = $_val;
                 break;
             default:
                 $_attrs[] = $_key . '="' . $_val . '"';
-                break;   
+                break;
         }
     }
     
     if (SmartyPaginate::getTotal($_id) === false) {
         $smarty->trigger_error("paginate_prev: total was not set");
-        return;        
+        return;
     }
     
     $_url = SmartyPaginate::getURL($_id);
     
-    $_attrs = !empty($_attrs) ? ' ' . implode(' ', $_attrs) : '';    
+    $_attrs = !empty($_attrs) ? ' ' . implode(' ', $_attrs) : '';
     
-    if(($_item = SmartyPaginate::_getPrevPageItem($_id)) !== false) {
+    if (($_item = SmartyPaginate::_getPrevPageItem($_id)) !== false) {
         $_show = true;
         $_text = isset($params['text']) ? $params['text'] : SmartyPaginate::getPrevText($_id);
-        if($id == true){
-        $_url .= '?id=' . $id;
+        if ($id == true) {
+            $_url .= '?id=' . $id;
         }
-        if($q == true){
-        $_url .= '?q=' . $q;
+        if ($q == true) {
+            $_url .= '?q=' . $q;
         }
         $_url .= (strpos($_url, '?') === false) ? '?' : '&';
         $_url .= SmartyPaginate::getUrlVar($_id) . '=' . $_item;
     } else {
-        $_show = false;   
+        $_show = false;
     }
     
-    return $_show ? '<a class="page-link" href="' . $sitepath . "/" . str_replace('&','&amp;', $_url) . '"' . $_attrs . '>' . $_text . '</a>' : '';
+    return $_show ? '<a class="page-link" href="' . $sitepath . "/" . str_replace('&', '&amp;', $_url) . '"' . $_attrs . '>' . $_text . '</a>' : '';
 }
-
-?>

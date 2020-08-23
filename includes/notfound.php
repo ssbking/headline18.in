@@ -5,7 +5,7 @@
  *  (c) 2011 Predrag Rukavina - admin[at]phpenter[dot]net
  *  All rights reserved
  *
- *  This script is part of the PHP Enter project. 
+ *  This script is part of the PHP Enter project.
  *  The PHP Enter project is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU General Public License
  *  as published by the Free Software Foundation; either version 2
@@ -23,8 +23,7 @@
  *
  *  This copyright notice MUST appear in all copies of the script!
  * ********************************************************************** */
-echo "<center><div style='width:468px;height:20px;margin:0px auto;padding:10px;text-align:center;font-family:tahoma;border:1px dotted #555;color:#555'>Template not found</div></center>"
+echo "<center><div style='width:468px;height:20px;margin:0px auto;padding:10px;text-align:center;font-family:tahoma;border:1px dotted #555;color:#555'>Template not found</div></center>";
 ######################################
 ##notfound.php                  BETA##
 ######################################
-?>

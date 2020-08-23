@@ -5,7 +5,7 @@
 *  (c) 2011 Predrag Rukavina - admin[at]phpenter[dot]net
 *  All rights reserved
 *
-*  This script is part of the PHP Enter project. 
+*  This script is part of the PHP Enter project.
 *  The PHP Enter project is free software; you can redistribute it and/or
 *  modify it under the terms of the GNU General Public License
 *  as published by the Free Software Foundation; either version 2
@@ -23,28 +23,29 @@
 *
 *  This copyright notice MUST appear in all copies of the script!
 * ********************************************************************** */
-include ('settings.php');
-require_once ('includes/library/HTMLPurifier.auto.php');
-include ('classes/class.upload.php');
+include('settings.php');
+require_once('includes/library/HTMLPurifier.auto.php');
+include('classes/class.upload.php');
 $config = HTMLPurifier_Config::createDefault();
 $config->set('Core.Encoding', 'UTF-8');
 $purifier = new HTMLPurifier($config);
 define('CONST_VALS', '1');
-require_once ('salt.php');
-require_once ('classes/securesession.class.php');
+require_once('salt.php');
+require_once('classes/securesession.class.php');
 enterLogin($salt);
 $ac = $conn->Execute('SELECT * FROM categori ORDER BY name ASC');
-if (!$ac)
- print $conn->ErrorMsg();
-else
- while (!$ac->EOF) {
-  if ($ac->fields['cord'] == 0) {
-   $categori[] = $ac->fields;
-  } else {
-   $subcat[] = $ac->fields;
-  }
-  $ac->MoveNext();
- }
+if (!$ac) {
+    print $conn->ErrorMsg();
+} else {
+    while (!$ac->EOF) {
+        if ($ac->fields['cord'] == 0) {
+            $categori[] = $ac->fields;
+        } else {
+            $subcat[] = $ac->fields;
+        }
+        $ac->MoveNext();
+    }
+}
 $smarty->assign('categori', $categori);
 $smarty->assign('subcat', @$subcat);
 $smarty->display('blank.php');
@@ -69,188 +70,189 @@ echo '<div>';
 echo '<div>';
 echo '<div class="container minheight mt-2">';
 if (!@$_SESSION['inecsess']) {
- echo "<div class='alert alert-danger'>$lang[176]</div></div></div>";
- $smarty->display('footer.php');
- die();
+    echo "<div class='alert alert-danger'>$lang[176]</div></div></div>";
+    $smarty->display('footer.php');
+    die();
 }
 $shouter = @$_SESSION['INC_USER_ID'];
 $ad = $conn->Execute('SELECT * FROM users WHERE usid = ' . $conn->qstr($shouter) . ' LIMIT 1');
-if (!$ad)
- print $conn->ErrorMsg();
-else
- while (!$ad->EOF) {
-  $priv = $ad->fields['privilege'];
-  $kori = $ad->fields['usid'];
-  $usercc = $ad->fields['username'];
-  $thumbnails = $ad->fields['thumbs'];
-  if ($priv == '1') {
-   echo "<div class='alert alert-danger'>" . $lang['232'] . "</div></div></div>";
-   $smarty->display('footer.php');
-   die();
-  }
-  $ad->MoveNext();
- }
+if (!$ad) {
+    print $conn->ErrorMsg();
+} else {
+    while (!$ad->EOF) {
+        $priv = $ad->fields['privilege'];
+        $kori = $ad->fields['usid'];
+        $usercc = $ad->fields['username'];
+        $thumbnails = $ad->fields['thumbs'];
+        if ($priv == '1') {
+            echo "<div class='alert alert-danger'>" . $lang['232'] . "</div></div></div>";
+            $smarty->display('footer.php');
+            die();
+        }
+        $ad->MoveNext();
+    }
+}
  if ($incitem == '0') {
-   echo "<div class='alert alert-danger'>" . $lang['232'] . "</div></div></div>";
-   $smarty->display('footer.php');
-   die();
-  }
+     echo "<div class='alert alert-danger'>" . $lang['232'] . "</div></div></div>";
+     $smarty->display('footer.php');
+     die();
+ }
 if (isset($_POST['query'])) {
-  $token = @$_SESSION['confirm'];
- unset($_SESSION['confirm']);
- session_write_close();
- if ($token && @$_POST['token'] == $token) {
-  //do nothing
- } else {
-  echo "<div class='alert alert-danger'>$lang[139]</div></div></div>";
-  $smarty->display('footer.php');
-  die();
- }
- $cuniver = $_POST['title'];
- if (get_magic_quotes_gpc()) {
-  $main = stripslashes(@$_POST['main']);
-  $myoption = stripslashes(@$_POST['myoption']);
-  $newsid = stripslashes($_POST['newsid']);
-  $univer = stripslashes($_POST['univer']);
-  $idblog = stripslashes($_POST['idblog']);
-  $title = stripslashes($_POST['title']);
-  $brief = stripslashes($_POST['brief']);
-  $longdesc = stripslashes(html_entity_decode($_POST['longdesc']));
- } else {
-  $main = @$_POST['main'];
-  $myoption = @$_POST['myoption'];
-  $newsid = $_POST['newsid'];
-  $univer = $_POST['univer'];
-  $idblog = $_POST['idblog'];
-  $title = $_POST['title'];
-  $brief = $_POST['brief'];
-  $longdesc = html_entity_decode($_POST['longdesc']);
- }
- $main = $purifier->purify($main);
- $myoption = $purifier->purify($myoption);
- $newsid = $purifier->purify($newsid);
- $univer = $purifier->purify($univer);
- $idblog = $purifier->purify($idblog);
- $title = $purifier->purify($title);
- $brief = $purifier->purify($brief);
- $longdesc = $purifier->purify($longdesc);
- $title = strip_tags($title);
- $brief = strip_tags($brief);
- if (strlen($idblog) < 1) {
-  echo "<div class='alert alert-danger'>$lang[238] <a href='javascript:history.go(-1)'>$lang[135]</a></div></div>";
-  $smarty->display('footer.php');
-  die();
- }
- $delimiter = explode("|", $idblog);
- $idblog = $delimiter[0];
- $idname = $delimiter[1];
- $seoname = $delimiter[2];
- enterBlacklister($title, $brief, $longdesc, $smarty);
- if (strlen($title) < 5 or strlen($title) > 160) {
-  echo "<div class='alert alert-danger'>$lang[239] <a href='javascript:history.go(-1)'>$lang[135]</a></div></div>";
-  $smarty->display('footer.php');
-  die();
- }
- if (strlen($brief) > 500) {
-  echo "<div class='alert alert-danger'>$lang[240] <a href='javascript:history.go(-1)'>$lang[135]</a></div></div>";
-  $smarty->display('footer.php');
-  die();
- }
- if (strlen($longdesc) < 50 or strlen($longdesc) > $maxposting) {
-  echo "<div class='alert alert-danger'>$lang[241] <a href='javascript:history.go(-1)'>$lang[135]</a></div></div>";
-  $smarty->display('footer.php');
-  die();
- }
- if (@$myoption == 1) {
-  if ($_FILES['image']['name'] == "") {
-   $newimage = "0";
-  } else {
-   $newimage = $_FILES['image']['name'];
-   $filetype = substr(strrchr($newimage, '.'), 1);
-   if (($filetype != "jpeg") && ($filetype != "jpg") && ($filetype != "JPG") && ($filetype != "gif") && ($filetype != "png")) {
-    echo "<div class='alert alert-danger'>$lang[190] <a href='javascript:history.go(-1)'>$lang[135]</a></div></div>";
-    $smarty->display('footer.php');
-    die();
-   }
-   $imagesize = getimagesize($_FILES['image']['tmp_name']);
-   if ($imagesize == false) {
-    echo "<div class='alert alert-danger'>$lang[190] <a href='javascript:history.go(-1)'>$lang[135]</a></div></div>";
-    $smarty->display('footer.php');
-    die();
-   }
-   $picwidth = $imagesize[0];
-   $picheight = $imagesize[1];
-   if ($picwidth > 2200 || $picheight > 2200) {
-    echo "<div class='alert alert-danger'>$lang[191] <a href='javascript:history.go(-1)'>$lang[135]</a></div></div>";
-    $smarty->display('footer.php');
-    $conn->Close();
-    die();
-   }
-   if ($picwidth < 250 || $picheight < 250) {
-    echo "<div class='alert alert-danger'>$lang[236] <a href='javascript:history.go(-1)'>$lang[135]</a></div></div>";
-    $smarty->display('footer.php');
-    $conn->Close();
-    die();
-   }
-   if ($newimage == false) {
-    $newimage = "0";
-   } else {
-    $newimage = $_FILES['image']['name'];
-    $time = date("ymdHis");
-    if ($newimage == false) {
-     $newimage = "0";
+    $token = @$_SESSION['confirm'];
+    unset($_SESSION['confirm']);
+    session_write_close();
+    if ($token && @$_POST['token'] == $token) {
+        //do nothing
     } else {
-     $handle = new Upload($_FILES['image']);
-     if ($handle->uploaded) {
-      $handle->file_new_name_body = $time;
-      $handle->image_convert = 'jpg';
-      $handle->Process('uploads');
-      $handle->file_new_name_body = $time;
-      $handle->image_convert = 'jpg';
-      $handle->image_resize = true;
-      $handle->image_ratio_crop = true;
-      $handle->image_precrop = array(
+        echo "<div class='alert alert-danger'>$lang[139]</div></div></div>";
+        $smarty->display('footer.php');
+        die();
+    }
+    $cuniver = $_POST['title'];
+    if (get_magic_quotes_gpc()) {
+        $main = stripslashes(@$_POST['main']);
+        $myoption = stripslashes(@$_POST['myoption']);
+        $newsid = stripslashes($_POST['newsid']);
+        $univer = stripslashes($_POST['univer']);
+        $idblog = stripslashes($_POST['idblog']);
+        $title = stripslashes($_POST['title']);
+        $brief = stripslashes($_POST['brief']);
+        $longdesc = stripslashes(html_entity_decode($_POST['longdesc']));
+    } else {
+        $main = @$_POST['main'];
+        $myoption = @$_POST['myoption'];
+        $newsid = $_POST['newsid'];
+        $univer = $_POST['univer'];
+        $idblog = $_POST['idblog'];
+        $title = $_POST['title'];
+        $brief = $_POST['brief'];
+        $longdesc = html_entity_decode($_POST['longdesc']);
+    }
+    $main = $purifier->purify($main);
+    $myoption = $purifier->purify($myoption);
+    $newsid = $purifier->purify($newsid);
+    $univer = $purifier->purify($univer);
+    $idblog = $purifier->purify($idblog);
+    $title = $purifier->purify($title);
+    $brief = $purifier->purify($brief);
+    $longdesc = $purifier->purify($longdesc);
+    $title = strip_tags($title);
+    $brief = strip_tags($brief);
+    if (strlen($idblog) < 1) {
+        echo "<div class='alert alert-danger'>$lang[238] <a href='javascript:history.go(-1)'>$lang[135]</a></div></div>";
+        $smarty->display('footer.php');
+        die();
+    }
+    $delimiter = explode("|", $idblog);
+    $idblog = $delimiter[0];
+    $idname = $delimiter[1];
+    $seoname = $delimiter[2];
+    enterBlacklister($title, $brief, $longdesc, $smarty);
+    if (strlen($title) < 5 or strlen($title) > 560) {
+        echo "<div class='alert alert-danger'>$lang[239] <a href='javascript:history.go(-1)'>$lang[135]</a></div></div>";
+        $smarty->display('footer.php');
+        die();
+    }
+    if (strlen($brief) > 1000) {
+        echo "<div class='alert alert-danger'>$lang[240] <a href='javascript:history.go(-1)'>$lang[135]</a></div></div>";
+        $smarty->display('footer.php');
+        die();
+    }
+    if (strlen($longdesc) < 110 or strlen($longdesc) > $maxposting) {
+        echo "<div class='alert alert-danger'>$lang[241] <a href='javascript:history.go(-1)'>$lang[135]</a></div></div>";
+        $smarty->display('footer.php');
+        die();
+    }
+    if (@$myoption == 1) {
+        if ($_FILES['image']['name'] == "") {
+            $newimage = "0";
+        } else {
+            $newimage = $_FILES['image']['name'];
+            $filetype = substr(strrchr($newimage, '.'), 1);
+            if (($filetype != "jpeg") && ($filetype != "jpg") && ($filetype != "JPG") && ($filetype != "gif") && ($filetype != "png")) {
+                echo "<div class='alert alert-danger'>$lang[190] <a href='javascript:history.go(-1)'>$lang[135]</a></div></div>";
+                $smarty->display('footer.php');
+                die();
+            }
+            $imagesize = getimagesize($_FILES['image']['tmp_name']);
+            if ($imagesize == false) {
+                echo "<div class='alert alert-danger'>$lang[190] <a href='javascript:history.go(-1)'>$lang[135]</a></div></div>";
+                $smarty->display('footer.php');
+                die();
+            }
+            $picwidth = $imagesize[0];
+            $picheight = $imagesize[1];
+            if ($picwidth > 2200 || $picheight > 2200) {
+                echo "<div class='alert alert-danger'>$lang[191] <a href='javascript:history.go(-1)'>$lang[135]</a></div></div>";
+                $smarty->display('footer.php');
+                $conn->Close();
+                die();
+            }
+            if ($picwidth < 250 || $picheight < 250) {
+                echo "<div class='alert alert-danger'>$lang[236] <a href='javascript:history.go(-1)'>$lang[135]</a></div></div>";
+                $smarty->display('footer.php');
+                $conn->Close();
+                die();
+            }
+            if ($newimage == false) {
+                $newimage = "0";
+            } else {
+                $newimage = $_FILES['image']['name'];
+                $time = date("ymdHis");
+                if ($newimage == false) {
+                    $newimage = "0";
+                } else {
+                    $handle = new Upload($_FILES['image']);
+                    if ($handle->uploaded) {
+                        $handle->file_new_name_body = $time;
+                        $handle->image_convert = 'jpg';
+                        $handle->Process('uploads');
+                        $handle->file_new_name_body = $time;
+                        $handle->image_convert = 'jpg';
+                        $handle->image_resize = true;
+                        $handle->image_ratio_crop = true;
+                        $handle->image_precrop = array(
        '0',
        '0',
        '22%',
        '0');
-      $handle->image_y = 135;
-      $handle->image_x = 222;
-      $handle->Process('minthumb');
-      $handle->file_new_name_body = $time;
-      $handle->image_convert = 'jpg';
-      $handle->image_resize = true;
-      $handle->image_ratio_y = true;
-      $handle->image_x = 395;
-      $handle->Process('maxthumb');
-      if ($handle->processed) {
-       $handle->Clean();
-      } else {
-       echo 'error : ' . $handle->error;
-      }
-     }
+                        $handle->image_y = 135;
+                        $handle->image_x = 222;
+                        $handle->Process('minthumb');
+                        $handle->file_new_name_body = $time;
+                        $handle->image_convert = 'jpg';
+                        $handle->image_resize = true;
+                        $handle->image_ratio_y = true;
+                        $handle->image_x = 395;
+                        $handle->Process('maxthumb');
+                        if ($handle->processed) {
+                            $handle->Clean();
+                        } else {
+                            echo 'error : ' . $handle->error;
+                        }
+                    }
+                }
+            }
+            $newimage = $time . ".jpg";
+        }
     }
-   }
-   $newimage = $time . ".jpg";
-  }
- }
- $first = array(
+    $first = array(
   'onload',
   'onclick',
   'javascript',
   'script');
- $second = array(
+    $second = array(
   '-',
   '-',
   '-',
   '-');
- $longdesc = str_replace($first, $second, $longdesc);
- $helper = preg_replace('/\s+/', '_', $_POST['title']);
- $helper = preg_replace('/[^A-Za-z0-9\-_+ ]/', '', $helper);
- $except = htmlspecialchars_decode($longdesc);
- $except = strip_tags($except);
- if (@$myoption == 1) {
-  $sql = $conn->Prepare('UPDATE newser SET 
+    $longdesc = str_replace($first, $second, $longdesc);
+    $helper = preg_replace('/\s+/', '_', $_POST['title']);
+    $helper = preg_replace('/[^A-Za-z0-9\-_+ ]/', '', $helper);
+    $except = htmlspecialchars_decode($longdesc);
+    $except = strip_tags($except);
+    if (@$myoption == 1) {
+        $sql = $conn->Prepare('UPDATE newser SET 
 main = ' . $conn->qstr($main) . ',
 idblog = ' . $conn->qstr($idblog) . ',
 idname = ' . $conn->qstr($idname) . ',
@@ -262,11 +264,11 @@ shortdesc = ' . $conn->qstr($except) . ',
 image = ' . $conn->qstr($newimage) . ',
 longdesc = ' . $conn->qstr($longdesc) . '
 WHERE  newsid = ' . $conn->qstr($newsid) . ' and userid = ' . $conn->qstr($shouter) . '');
-  if ($conn->Execute($sql) === false) {
-   print '<div class="alert alert-danger">' . $conn->ErrorMsg() . '</div>';
-  }
- } else {
-  $sql = $conn->Prepare('UPDATE newser SET 
+        if ($conn->Execute($sql) === false) {
+            print '<div class="alert alert-danger">' . $conn->ErrorMsg() . '</div>';
+        }
+    } else {
+        $sql = $conn->Prepare('UPDATE newser SET 
 main = ' . $conn->qstr($main) . ',
 idblog = ' . $conn->qstr($idblog) . ',
 idname = ' . $conn->qstr($idname) . ',
@@ -277,27 +279,27 @@ brief = ' . $conn->qstr($brief) . ',
 shortdesc = ' . $conn->qstr($except) . ',
 longdesc = ' . $conn->qstr($longdesc) . '
 WHERE  newsid = ' . $conn->qstr($newsid) . ' and userid = ' . $conn->qstr($shouter) . '');
-  if ($conn->Execute($sql) === false) {
-   print '<div class="alert alert-danger">' . $conn->ErrorMsg() . '</div>';
-  }
- }
-if ($conn->affected_rows() !== 0) {
-$sql2 = $conn->Prepare('UPDATE reviews SET 
+        if ($conn->Execute($sql) === false) {
+            print '<div class="alert alert-danger">' . $conn->ErrorMsg() . '</div>';
+        }
+    }
+    if ($conn->affected_rows() !== 0) {
+        $sql2 = $conn->Prepare('UPDATE reviews SET 
 newsurl = ' . $conn->qstr($helper) . ',
 newscat = ' . $conn->qstr($idblog) . '
 WHERE comrev = ' . $conn->qstr($univer) . '');
-  if ($conn->Execute($sql2) === false) {
-   print '<div class="alert alert-danger">' . $conn->ErrorMsg() . '</div>';
-  }
- }
- $body = "<div><h4>$sitetitle</h4></div><div>$lang[218]</div><br /><br /><div>$lang[237] via $usercc.</div><br /><br /><div>$except</div><br /><br /><div><a href='$sitepath'>$sitetitle</a></div>";
- $subject = $lang['237'] . " " . $sitetitle;
- $headers = 'MIME-Version: 1.0' . "\r\n";
- $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
- $headers .= "From: $sitetitle <$sitemail>" . "\r\n";
- if ($messaging == '1') {
-  mail($sitemail, $subject, $body, $headers);
- } ?>
+        if ($conn->Execute($sql2) === false) {
+            print '<div class="alert alert-danger">' . $conn->ErrorMsg() . '</div>';
+        }
+    }
+    $body = "<div><h4>$sitetitle</h4></div><div>$lang[218]</div><br /><br /><div>$lang[237] via $usercc.</div><br /><br /><div>$except</div><br /><br /><div><a href='$sitepath'>$sitetitle</a></div>";
+    $subject = $lang['237'] . " " . $sitetitle;
+    $headers = 'MIME-Version: 1.0' . "\r\n";
+    $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+    $headers .= "From: $sitetitle <$sitemail>" . "\r\n";
+    if ($messaging == '1') {
+        mail($sitemail, $subject, $body, $headers);
+    } ?>
 <script>
 setTimeout(function(){
 window.location.replace("<?php echo $sitepath; ?>");
@@ -313,33 +315,33 @@ window.location.replace("<?php echo $sitepath; ?>");
 </div>
 <?php
 } else {
- $id = $_GET['id'];
- $ag = $conn->Execute('SELECT * FROM newser WHERE newsid = ' . $conn->qstr($id) . ' and userid = ' . $conn->qstr($shouter) . ' LIMIT 1');
- if ($ag->fields == 0) {
-  echo "<div class='alert alert-danger'>$lang[139]</div></div></div>";
-  $smarty->display('footer.php');
-  die();
- }
- while (!$ag->EOF) {
-  $newsid = $ag->fields['newsid'];
-  $main = $ag->fields['main'];
-  $univer = $ag->fields['univer'];
-  $idblog = $ag->fields['idblog'];
-  $idname = $ag->fields['idname'];
-  $seoname = $ag->fields['seoname'];
-  $editor = $ag->fields['editor'];
-  $userid = $ag->fields['userid'];
-  $title = $ag->fields['title'];
-  $brief = $ag->fields['brief'];
-  $image = $ag->fields['image'];
-  $longdesc = $ag->fields['longdesc'];
-  $ag->MoveNext();
- }
- $token = md5(uniqid());
- $_SESSION['confirm'] = $token;
- session_write_close();
- include ('includes/edit.php');
-}
+        $id = $_GET['id'];
+        $ag = $conn->Execute('SELECT * FROM newser WHERE newsid = ' . $conn->qstr($id) . ' and userid = ' . $conn->qstr($shouter) . ' LIMIT 1');
+        if ($ag->fields == 0) {
+            echo "<div class='alert alert-danger'>$lang[139]</div></div></div>";
+            $smarty->display('footer.php');
+            die();
+        }
+        while (!$ag->EOF) {
+            $newsid = $ag->fields['newsid'];
+            $main = $ag->fields['main'];
+            $univer = $ag->fields['univer'];
+            $idblog = $ag->fields['idblog'];
+            $idname = $ag->fields['idname'];
+            $seoname = $ag->fields['seoname'];
+            $editor = $ag->fields['editor'];
+            $userid = $ag->fields['userid'];
+            $title = $ag->fields['title'];
+            $brief = $ag->fields['brief'];
+            $image = $ag->fields['image'];
+            $longdesc = $ag->fields['longdesc'];
+            $ag->MoveNext();
+        }
+        $token = md5(uniqid());
+        $_SESSION['confirm'] = $token;
+        session_write_close();
+        include('includes/edit.php');
+    }
 ?>
 </div>
 </div>

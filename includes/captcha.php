@@ -5,7 +5,7 @@
 *  (c) 2011 Predrag Rukavina - admin[at]phpenter[dot]org
 *  All rights reserved
 *
-*  This script is part of the PHP Enter project. 
+*  This script is part of the PHP Enter project.
 *  The PHP Enter project is free software; you can redistribute it and/or
 *  modify it under the terms of the GNU General Public License
 *  as published by the Free Software Foundation; either version 2
@@ -26,27 +26,27 @@
 Header("Content-type: image/png");
 $Width = 75;
 $Height = 28;
-$img = ImageCreateTrueColor($Width,$Height);
-$bg = imagecolorallocate($img,255,255,255);
-imagefill($img,0,0,$bg);
-$randgrid = rand(3,11);
-$grid = imagecolorallocate($img,255,255,255);
-imagesetstyle($img,array($bg,$grid));
-imagegrid($img,$Width,$Height,$randgrid,IMG_COLOR_STYLED);
-$randangle = rand(0,0);
-$randay = rand(22,24);
-$randfnt = rand(22,24);
+$img = ImageCreateTrueColor($Width, $Height);
+$bg = imagecolorallocate($img, 255, 255, 255);
+imagefill($img, 0, 0, $bg);
+$randgrid = rand(3, 11);
+$grid = imagecolorallocate($img, 255, 255, 255);
+imagesetstyle($img, array($bg,$grid));
+imagegrid($img, $Width, $Height, $randgrid, IMG_COLOR_STYLED);
+$randangle = rand(0, 0);
+$randay = rand(22, 24);
+$randfnt = rand(22, 24);
 $font=getcwd()."/fonts/cour.ttf";
-$white = imagecolorallocate($img,0,128,234);
-$word = rand(1111,9999);
-$where = imagettfbbox($randfnt,0,$font,$word);
+$white = imagecolorallocate($img, 0, 128, 234);
+$word = rand(1111, 9999);
+$where = imagettfbbox($randfnt, 0, $font, $word);
 $_SESSION['check'] = ($word);
-imagettftext($img,22,$randangle,($Width - $where[4]) / 2,$randay,$white,$font,$word);
+imagettftext($img, 22, $randangle, ($Width - $where[4]) / 2, $randay, $white, $font, $word);
 ImagePNG($img);
 ImageDestroy($img);
 /**
  * imagegrid()
- * 
+ *
  * @param mixed $image
  * @param mixed $w
  * @param mixed $h
@@ -54,15 +54,15 @@ ImageDestroy($img);
  * @param mixed $color
  * @return
  */
-function imagegrid($image,$w,$h,$s,$color) {
-	for($iw = 1; $iw < $w / $s; $iw++) {
-		imageline($image,$iw * $s,0,$iw * $s,$w,$color);
-	}
-	for($ih = 1; $ih < $h / $s; $ih++) {
-		imageline($image,0,$ih * $s,$w,$ih * $s,$color);
-	}
+function imagegrid($image, $w, $h, $s, $color)
+{
+    for ($iw = 1; $iw < $w / $s; $iw++) {
+        imageline($image, $iw * $s, 0, $iw * $s, $w, $color);
+    }
+    for ($ih = 1; $ih < $h / $s; $ih++) {
+        imageline($image, 0, $ih * $s, $w, $ih * $s, $color);
+    }
 }
 ##############################
 ##captcha.php           BETA##
 ##############################
-?>

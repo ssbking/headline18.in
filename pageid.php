@@ -5,7 +5,7 @@
 *  (c) 2011 Predrag Rukavina - admin[at]phpenter[dot]net
 *  All rights reserved
 *
-*  This script is part of the PHP Enter project. 
+*  This script is part of the PHP Enter project.
 *  The PHP Enter project is free software; you can redistribute it and/or
 *  modify it under the terms of the GNU General Public License
 *  as published by the Free Software Foundation; either version 2
@@ -23,24 +23,25 @@
 *
 *  This copyright notice MUST appear in all copies of the script!
 ************************************************************************/
-require_once ('settings.php');
+require_once('settings.php');
 $ac = $conn->Execute('SELECT * FROM categori ORDER BY name ASC');
-if(!$ac)
- print $conn->ErrorMsg();
-else
- while(!$ac->EOF) {
-  if($ac->fields['cord'] == 0) {
-   $categori[] = $ac->fields;
-  } else {
-   $subcat[] = $ac->fields;
-  }
-  $ac->MoveNext();
- }
+if (!$ac) {
+    print $conn->ErrorMsg();
+} else {
+    while (!$ac->EOF) {
+        if ($ac->fields['cord'] == 0) {
+            $categori[] = $ac->fields;
+        } else {
+            $subcat[] = $ac->fields;
+        }
+        $ac->MoveNext();
+    }
+}
 $smarty->caching = $caching;
-$smarty->assign('categori',@$categori);
-$smarty->assign('subcat',@$subcat);
+$smarty->assign('categori', @$categori);
+$smarty->assign('subcat', @$subcat);
 $id = (isset($_GET['id']))?$_GET['id']:'';
-switch($id) {
+switch ($id) {
   case 'privacy':
     $smarty->display('privacy.php');
     break;
@@ -54,4 +55,3 @@ switch($id) {
 ######################################
 ##pageid.php                    BETA##
 ######################################
-?>

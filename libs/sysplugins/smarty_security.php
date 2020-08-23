@@ -379,11 +379,13 @@ class Smarty_Security
     public function isTrustedTag($tag_name, $compiler)
     {
         // check for internal always required tags
-        if (in_array($tag_name,
-                     array('assign', 'call', 'private_filter', 'private_block_plugin', 'private_function_plugin',
+        if (in_array(
+            $tag_name,
+            array('assign', 'call', 'private_filter', 'private_block_plugin', 'private_function_plugin',
                            'private_object_block_function', 'private_object_function', 'private_registered_function',
                            'private_registered_block', 'private_special_variable', 'private_print_expression',
-                           'private_modifier'))) {
+                           'private_modifier')
+        )) {
             return true;
         }
         // check security settings
@@ -416,8 +418,11 @@ class Smarty_Security
         if (!in_array($var_name, $this->disabled_special_smarty_vars)) {
             return true;
         } else {
-            $compiler->trigger_template_error("special variable '\$smarty.{$var_name}' not allowed by security setting",
-                                              null, true);
+            $compiler->trigger_template_error(
+                "special variable '\$smarty.{$var_name}' not allowed by security setting",
+                null,
+                true
+            );
         }
 
         return false; // should not, but who knows what happens to the compiler in the future?
@@ -443,16 +448,22 @@ class Smarty_Security
             if (empty($this->disabled_modifiers) || !in_array($modifier_name, $this->disabled_modifiers)) {
                 return true;
             } else {
-                $compiler->trigger_template_error("modifier '{$modifier_name}' disabled by security setting", null,
-                                                  true);
+                $compiler->trigger_template_error(
+                    "modifier '{$modifier_name}' disabled by security setting",
+                    null,
+                    true
+                );
             }
         } elseif (in_array($modifier_name, $this->allowed_modifiers) &&
                   !in_array($modifier_name, $this->disabled_modifiers)
         ) {
             return true;
         } else {
-            $compiler->trigger_template_error("modifier '{$modifier_name}' not allowed by security setting", null,
-                                              true);
+            $compiler->trigger_template_error(
+                "modifier '{$modifier_name}' not allowed by security setting",
+                null,
+                true
+            );
         }
 
         return false; // should not, but who knows what happens to the compiler in the future?
@@ -537,15 +548,15 @@ class Smarty_Security
         }
         if ($this->_secure_dir !== $this->secure_dir) {
             $this->secure_dir = (array)$this->secure_dir;
-            foreach($this->secure_dir as $k => $d) {
-                $this->secure_dir[$k] = $this->smarty->_realpath($d.DIRECTORY_SEPARATOR,true);
+            foreach ($this->secure_dir as $k => $d) {
+                $this->secure_dir[$k] = $this->smarty->_realpath($d.DIRECTORY_SEPARATOR, true);
             }
             $this->_updateResourceDir($this->_secure_dir, $this->secure_dir);
             $this->_secure_dir = $this->secure_dir;
         }
         $addPath =  $this->_checkDir($filepath, $this->_resource_dir);
         if ($addPath !== false) {
-           $this->_resource_dir = array_merge($this->_resource_dir, $addPath);
+            $this->_resource_dir = array_merge($this->_resource_dir, $addPath);
         }
         return true;
     }
@@ -603,9 +614,9 @@ class Smarty_Security
         }
         $addPath =  $this->_checkDir($filepath, $this->_php_resource_dir);
         if ($addPath !== false) {
-           $this->_php_resource_dir = array_merge($this->_php_resource_dir, $addPath);
+            $this->_php_resource_dir = array_merge($this->_php_resource_dir, $addPath);
         }
-         return true;
+        return true;
     }
 
     /**
@@ -614,12 +625,13 @@ class Smarty_Security
      * @param array $oldDir
      * @param array $newDir
      */
-    private function _updateResourceDir($oldDir, $newDir) {
+    private function _updateResourceDir($oldDir, $newDir)
+    {
         foreach ($oldDir as $directory) {
             $directory = $this->smarty->_realpath($directory, true);
             $length = strlen($directory);
             foreach ($this->_resource_dir as $dir) {
-                if (substr($dir, 0,$length) === $directory) {
+                if (substr($dir, 0, $length) === $directory) {
                     unset($this->_resource_dir[ $dir ]);
                 }
             }
@@ -648,9 +660,9 @@ class Smarty_Security
         $directory = dirname($filepath) . DIRECTORY_SEPARATOR;
         $_directory = array();
         while (true) {
-             // test if the directory is trusted
+            // test if the directory is trusted
             if (isset($dirs[ $directory ])) {
-               return $_directory;
+                return $_directory;
             }
             // abort if we've reached root
             if (!preg_match('#[\\\/][^\\\/]+[\\\/]$#', $directory)) {
@@ -658,7 +670,7 @@ class Smarty_Security
             }
             // remember the directory to add it to _resource_dir in case we're successful
             $_directory[ $directory ] = true;
-           // bubble up one level
+            // bubble up one level
             $directory = preg_replace('#[\\\/][^\\\/]+[\\\/]$#', DIRECTORY_SEPARATOR, $directory);
         }
 

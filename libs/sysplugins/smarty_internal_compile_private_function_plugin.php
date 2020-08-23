@@ -64,9 +64,12 @@ class Smarty_Internal_Compile_Private_Function_Plugin extends Smarty_Internal_Co
         // compile code
         $output = "{$function}({$_params},\$_smarty_tpl)";
         if (!empty($parameter[ 'modifierlist' ])) {
-            $output = $compiler->compileTag('private_modifier', array(),
-                                            array('modifierlist' => $parameter[ 'modifierlist' ],
-                                                  'value' => $output));
+            $output = $compiler->compileTag(
+                'private_modifier',
+                array(),
+                array('modifierlist' => $parameter[ 'modifierlist' ],
+                                                  'value' => $output)
+            );
         }
         $output = "<?php echo {$output};?>\n";
         return $output;

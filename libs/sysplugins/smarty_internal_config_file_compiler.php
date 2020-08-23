@@ -114,9 +114,11 @@ class Smarty_Internal_Config_File_Compiler
         }
         // init the lexer/parser to compile the config file
         /* @var Smarty_Internal_ConfigFileLexer $this ->lex */
-        $this->lex = new $this->lexer_class(str_replace(array("\r\n",
+        $this->lex = new $this->lexer_class(
+            str_replace(array("\r\n",
                                                               "\r"), "\n", $template->source->getContent()) . "\n",
-                                            $this);
+            $this
+        );
         /* @var Smarty_Internal_ConfigFileParser $this ->parser */
         $this->parser = new $this->parser_class($this->lex, $this);
 

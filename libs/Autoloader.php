@@ -20,11 +20,11 @@
  */
 class Smarty_Autoloader
 {
-   /**
-     * Filepath to Smarty root
-     *
-     * @var string
-     */
+    /**
+      * Filepath to Smarty root
+      *
+      * @var string
+      */
     public static $SMARTY_DIR = null;
 
     /**

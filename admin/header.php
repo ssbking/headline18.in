@@ -6,12 +6,12 @@ $ss->check_browser = true;
 $ss->check_ip_blocks = 2;
 $ss->secure_word = $salt;
 $ss->regenerate_id = true;
-if(!$ss->Check() || !isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
-$_SESSION = array();
-header('Location: signin.php');
-die();
+if (!$ss->Check() || !isset($_SESSION['logged_in']) || !$_SESSION['logged_in']) {
+    $_SESSION = array();
+    header('Location: signin.php');
+    die();
 }
-include ('adoconn.php');
+include('adoconn.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -79,11 +79,10 @@ include ('adoconn.php');
   <td align="left" valign="top">
   <div id="borders">
 <?php
-if (!@$_SESSION['incsess'])
-{
- echo "<div class='column center error'>Something went wrong with your session. Please <a href='signout.php'>sign out</a> and sign in again</td></tr></table></div></div></div></div>";
- include('footer.php');
- $_SESSION = array();
- die();
+if (!@$_SESSION['incsess']) {
+    echo "<div class='column center error'>Something went wrong with your session. Please <a href='signout.php'>sign out</a> and sign in again</td></tr></table></div></div></div></div>";
+    include('footer.php');
+    $_SESSION = array();
+    die();
 }
 ?>

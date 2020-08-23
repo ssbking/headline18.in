@@ -26,17 +26,28 @@ $servers = $_POST['host'];
 $users = $_POST['user'];
 $passwords = $_POST['pass'];
 $databases = $_POST['name'];
-if (empty($servers)) { echo '<div id="warn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Empty field Host</div>'; die;} 
-if (empty($users)) { echo '<div id="warn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Empty field DB Name</div>'; die;} 
-if (empty($passwords)) { echo '&nbsp;&nbsp;&nbsp;<font style="background:lightyellow">Empty field DB Password. Go back to review your settings.</font>';} 
-if (empty($databases)) { echo '<div id="warn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Empty field User</div>'; die;} 
+if (empty($servers)) {
+    echo '<div id="warn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Empty field Host</div>';
+    die;
+}
+if (empty($users)) {
+    echo '<div id="warn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Empty field DB Name</div>';
+    die;
+}
+if (empty($passwords)) {
+    echo '&nbsp;&nbsp;&nbsp;<font style="background:lightyellow">Empty field DB Password. Go back to review your settings.</font>';
+}
+if (empty($databases)) {
+    echo '<div id="warn">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Empty field User</div>';
+    die;
+}
 $dbhost = '$server';
 $dbusername = '$user';
 $dbpassword = '$password';
 $dbname = '$database';
 $myFile = realpath('./../') . "/admin/config.php";
 $fh = fopen($myFile, 'w') or die("can't open file- check CHMOD");
-$stringData = 
+$stringData =
 "<?php 
 $dbhost = '$servers';
 $dbusername = '$users';
@@ -46,7 +57,7 @@ $dbname = '$databases';
 fwrite($fh, $stringData);
 fclose($fh);
 error_reporting(0);
-include ('../admin/config.php');
+include('../admin/config.php');
 ?>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Configuration file successfully updated! <a href="install2.php"><b>Step 3</b></a>
 </div>

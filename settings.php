@@ -5,7 +5,7 @@
 *  (c) 2011 Predrag Rukavina - admin[at]phpenter[dot]net
 *  All rights reserved
 *
-*  This script is part of the PHP Enter project. 
+*  This script is part of the PHP Enter project.
 *  The PHP Enter project is free software; you can redistribute it and/or
 *  modify it under the terms of the GNU General Public License
 *  as published by the Free Software Foundation; either version 2
@@ -24,34 +24,35 @@
 *  This copyright notice MUST appear in all copies of the script!
 ************************************************************************/
 $filename = 'admin/version.php';
-if(!file_exists($filename)) {
- echo "<a href='install/index.php'><font style='color:#555555;font-family:verdana'>It seems to be script is not installed.</font></a>";
- die();
+if (!file_exists($filename)) {
+    echo "<a href='install/index.php'><font style='color:#555555;font-family:verdana'>It seems to be script is not installed.</font></a>";
+    die();
 }
 error_reporting(E_ALL & ~ E_STRICT & ~ E_NOTICE);
-include ('admin/config.php');
-include ('classes/adodb/adodb.inc.php');
+include('admin/config.php');
+include('classes/adodb/adodb.inc.php');
 $dbdriver = "mysqli";
 ######################################
 #$ADODB_CACHE_DIR = 'db/ADODB_cache';#
 ######################################
 $conn = ADONewConnection($dbdriver);
-$conn->Connect($server,$user,$password,$database);
+$conn->Connect($server, $user, $password, $database);
 ##############################
 #$conn->debug = true;
 #$ab = $conn->CacheExecute(3600, 'SELECT optionid, nameopt, valueopt, module, active FROM abcoption');
 ##############################
 $ab = $conn->Execute('SELECT optionid, nameopt, valueopt, module, active FROM abcoption');
-if(!$ab)
- print $conn->ErrorMsg();
-else
- while(!$ab->EOF) {
-  if($ab->fields['active'] == 2) {
-   $startmenu[] = $ab->fields;
-  }
-  $option[$ab->fields[0]] = $ab->fields[2];
-  $ab->MoveNext();
- }
+if (!$ab) {
+    print $conn->ErrorMsg();
+} else {
+    while (!$ab->EOF) {
+        if ($ab->fields['active'] == 2) {
+            $startmenu[] = $ab->fields;
+        }
+        $option[$ab->fields[0]] = $ab->fields[2];
+        $ab->MoveNext();
+    }
+}
 $sitetitle = $option[1];
 $metadesc = $option[2];
 $keywords = $option[3];
@@ -82,61 +83,66 @@ $hottopic = $option[27];
 $adsoffon = $option[28];
 $senseup = $option[29];
 $sensedown = $option[30];
+$sensehead = $option[52];
 $stopspam = $option[31];
 $incitem = $option[32];
 $keypublic = $option[33];
 $slider = $option[35];
 $efslide = $option[36];
 $logotext = $option[50];
-include ('libs/Smarty.class.php');
+include('libs/Smarty.class.php');
 $smarty = new smarty();
 $smarty->template_dir = 'themes/'.$themes;
 $smarty->compile_dir = 'temp/templates_c';
 $smarty->config_dir = 'temp/config';
 $smarty->cache_dir = 'temp/cache';
-require_once ("includes/functions.php");
-require_once ('languages/lang_'.$langs.'.php');
-$smarty->assign('lang',$lang);
-$smarty->assign('sitetitle',$sitetitle);
-$smarty->assign('keywords',$keywords);
-$smarty->assign('metadesc',$metadesc);
-$smarty->assign('sitepath',$sitepath);
-$smarty->assign('langs',$langs);
-$smarty->assign('themes',$themes);
-$smarty->assign('rewritemod',$rewritemod);
-$smarty->assign('frontext',$frontext);
-$smarty->assign('customheader',$customheader);
-$smarty->assign('toplinks',$toplinks);
-$smarty->assign('newson',$newson);
-$smarty->assign('newstext',$newstext);
-$smarty->assign('siteabout',$siteabout);
-$smarty->assign('siteprivacy',$siteprivacy);
-$smarty->assign('siteterms',$siteterms);
-$smarty->assign('editortrue',$editortrue);
-$smarty->assign('paginate',$paginate);
-$smarty->assign('logoon',$logoon);
-$smarty->assign('hottopic',$hottopic);
-$smarty->assign('maxtopic',$maxtopic);
-$smarty->assign('adsoffon',$adsoffon);
-$smarty->assign('senseup',$senseup);
-$smarty->assign('sensedown',$sensedown);
-$smarty->assign('keypublic',$keypublic);
-$smarty->assign('slider',$slider);
-$smarty->assign('efslide',$efslide);
-$smarty->assign('logotext',$logotext);
-if(isset($startmenu)) {
- $smarty->assign('startmenu',$startmenu);
+require_once("includes/functions.php");
+require_once('languages/lang_'.$langs.'.php');
+$smarty->assign('lang', $lang);
+$smarty->assign('sitetitle', $sitetitle);
+$smarty->assign('keywords', $keywords);
+$smarty->assign('metadesc', $metadesc);
+$smarty->assign('sitepath', $sitepath);
+$smarty->assign('langs', $langs);
+$smarty->assign('themes', $themes);
+$smarty->assign('rewritemod', $rewritemod);
+$smarty->assign('frontext', $frontext);
+$smarty->assign('customheader', $customheader);
+$smarty->assign('toplinks', $toplinks);
+$smarty->assign('newson', $newson);
+$smarty->assign('newstext', $newstext);
+$smarty->assign('siteabout', $siteabout);
+$smarty->assign('siteprivacy', $siteprivacy);
+$smarty->assign('siteterms', $siteterms);
+$smarty->assign('editortrue', $editortrue);
+$smarty->assign('paginate', $paginate);
+$smarty->assign('logoon', $logoon);
+$smarty->assign('hottopic', $hottopic);
+$smarty->assign('maxtopic', $maxtopic);
+$smarty->assign('adsoffon', $adsoffon);
+$smarty->assign('senseup', $senseup);
+$smarty->assign('sensedown', $sensedown);
+$smarty->assign('sensehead', $sensehead);
+$smarty->assign('keypublic', $keypublic);
+$smarty->assign('slider', $slider);
+$smarty->assign('efslide', $efslide);
+$smarty->assign('logotext', $logotext);
+if (isset($startmenu)) {
+    $smarty->assign('startmenu', $startmenu);
 }
 $ab->Close();
-if($sitedisabled == 1){
-echo"<center><img src='themes/classic/styles/images/under.gif' /></center>";
-die();
+if ($sitedisabled == 1) {
+    echo"<center><img src='themes/classic/styles/images/under.gif' /></center>";
+    die();
 }
-if ( !is_readable("themes/".$themes ."/main.php") ) { include ('includes/notfound.php'); die(); }
-if (file_exists("install/index.php") or file_exists("install/index.php") or file_exists("install/install1.php") or file_exists("install/install2.php") or file_exists("install/install3.php") or file_exists("install/install4.php")){
-    echo"<center style='color:red'>Please remove install directory from your server.</center>"; die(); 
+if (!is_readable("themes/".$themes ."/main.php")) {
+    include('includes/notfound.php');
+    die();
+}
+if (file_exists("install/index.php") or file_exists("install/index.php") or file_exists("install/install1.php") or file_exists("install/install2.php") or file_exists("install/install3.php") or file_exists("install/install4.php")) {
+    echo"<center style='color:red'>Please remove install directory from your server.</center>";
+    die();
 }
 ######################################
 ##settings.php                  BETA##
 ######################################
-?>

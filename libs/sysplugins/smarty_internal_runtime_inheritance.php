@@ -115,16 +115,18 @@ class Smarty_Internal_Runtime_Inheritance
         }
         if (isset($template) && (($tpl->parent->_isTplObj() && $tpl->parent->source->type !== 'extends') ||
                                  $tpl->smarty->extends_recursion)) {
-            $tpl->_subTemplateRender($template,
-                                     $tpl->cache_id,
-                                     $tpl->compile_id,
-                                     $tpl->caching ? 9999 : 0,
-                                     $tpl->cache_lifetime,
-                                     array(),
-                                     2,
-                                     false,
-                                     $uid,
-                                     $func);
+            $tpl->_subTemplateRender(
+                $template,
+                $tpl->cache_id,
+                $tpl->compile_id,
+                $tpl->caching ? 9999 : 0,
+                $tpl->cache_lifetime,
+                array(),
+                2,
+                false,
+                $uid,
+                $func
+            );
         }
     }
 
@@ -166,8 +168,11 @@ class Smarty_Internal_Runtime_Inheritance
      *
      * @throws \SmartyException
      */
-    public function process(Smarty_Internal_Template $tpl, Smarty_Internal_Block $block,
-                            Smarty_Internal_Block $parent = null)
+    public function process(
+        Smarty_Internal_Template $tpl,
+        Smarty_Internal_Block $block,
+        Smarty_Internal_Block $parent = null
+    )
     {
         if ($block->hide && !isset($block->child)) {
             return;

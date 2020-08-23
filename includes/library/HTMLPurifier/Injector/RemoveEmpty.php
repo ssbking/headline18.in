@@ -87,9 +87,13 @@ class HTMLPurifier_Injector_RemoveEmpty extends HTMLPurifier_Injector
             if (isset($this->exclude[$token->name])) {
                 $r = true;
                 foreach ($this->exclude[$token->name] as $elem) {
-                    if (!isset($token->attr[$elem])) $r = false;
+                    if (!isset($token->attr[$elem])) {
+                        $r = false;
+                    }
                 }
-                if ($r) return;
+                if ($r) {
+                    return;
+                }
             }
             if (isset($token->attr['id']) || isset($token->attr['name'])) {
                 return;

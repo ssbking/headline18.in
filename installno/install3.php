@@ -13,14 +13,13 @@
   </table>
 <?php
 require_once('../admin/config.php');
-include ('../classes/adodb/adodb.inc.php');
+include('../classes/adodb/adodb.inc.php');
 $dbdriver = "mysqli";
 $conn = ADONewConnection($dbdriver);
-$conn->Connect($server,$user,$password,$database);
+$conn->Connect($server, $user, $password, $database);
 //$conn->debug = true;
-if(isset($_POST['submit']))
-{
-?>
+if (isset($_POST['submit'])) {
+    ?>
 <div id="incral">
 <table width="70%" align="center" border="0">
 <tr>
@@ -31,19 +30,18 @@ if(isset($_POST['submit']))
 </table>
 <?php
 if (get_magic_quotes_gpc()) {
-$incpath = stripslashes($_POST['incpath']);
-} else {
-$incpath = $_POST['incpath'];
-}
+        $incpath = stripslashes($_POST['incpath']);
+    } else {
+        $incpath = $_POST['incpath'];
+    }
 
-if(!$incpath){ 
-echo "<center>Empty Field: Root Path:<a href=\"javascript:history.go(-1)\">Go Back</a></center>";  
-die();
-}
-$arecordSet = $conn->Execute("UPDATE abcoption SET valueopt = '$incpath' WHERE optionid = 4");
-$conn->Close();
-echo"&nbsp;&nbsp;&nbsp; Path: " . $incpath . "<br />&nbsp;&nbsp;&nbsp; <a href=\"install4.php\"><b>Step 5</b></a>";
-?>
+    if (!$incpath) {
+        echo "<center>Empty Field: Root Path:<a href=\"javascript:history.go(-1)\">Go Back</a></center>";
+        die();
+    }
+    $arecordSet = $conn->Execute("UPDATE abcoption SET valueopt = '$incpath' WHERE optionid = 4");
+    $conn->Close();
+    echo"&nbsp;&nbsp;&nbsp; Path: " . $incpath . "<br />&nbsp;&nbsp;&nbsp; <a href=\"install4.php\"><b>Step 5</b></a>"; ?>
 </div>
 <table width="100%" height="422px"  align="center" border="0">
 <tr>
@@ -53,8 +51,8 @@ echo"&nbsp;&nbsp;&nbsp; Path: " . $incpath . "<br />&nbsp;&nbsp;&nbsp; <a href=\
 </body>
 </html>
 <?php
-}else{
-?>
+} else {
+        ?>
 <div id="scentral">
 <table width="70%" align="center" border="0">
 <tr>
@@ -86,4 +84,5 @@ echo"&nbsp;&nbsp;&nbsp; Path: " . $incpath . "<br />&nbsp;&nbsp;&nbsp; <a href=\
   </table>
 </body>
 </html>
-<?php }  ?>
+<?php
+    }  ?>

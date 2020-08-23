@@ -98,12 +98,14 @@ class Smarty_Internal_ErrorHandler
         // or the error was within smarty but masked to be ignored
         if (!$_is_muted_directory || ($errno && $errno & error_reporting())) {
             if (self::$previousErrorHandler) {
-                return call_user_func(self::$previousErrorHandler,
-                                      $errno,
-                                      $errstr,
-                                      $errfile,
-                                      $errline,
-                                      $errcontext);
+                return call_user_func(
+                    self::$previousErrorHandler,
+                    $errno,
+                    $errstr,
+                    $errfile,
+                    $errline,
+                    $errcontext
+                );
             } else {
                 return false;
             }

@@ -86,7 +86,7 @@ class HTMLPurifier_ChildDef_Table extends HTMLPurifier_ChildDef
         $content = array();
 
         $tbody_mode = false; // if true, then we need to wrap any stray
-                             // <tr>s with a <tbody>.
+        // <tr>s with a <tbody>.
 
         $ws_accum =& $initial_ws;
 
@@ -99,13 +99,16 @@ class HTMLPurifier_ChildDef_Table extends HTMLPurifier_ChildDef
             case 'tbody':
                 $tbody_mode = true;
                 // fall through
+                // no break
             case 'tr':
                 $content[] = $node;
                 $ws_accum =& $content;
                 break;
             case 'caption':
                 // there can only be one caption!
-                if ($caption !== false)  break;
+                if ($caption !== false) {
+                    break;
+                }
                 $caption = $node;
                 $ws_accum =& $after_caption_ws;
                 break;
@@ -189,7 +192,7 @@ class HTMLPurifier_ChildDef_Table extends HTMLPurifier_ChildDef
             // we have to shuffle tr into tbody
             $current_tr_tbody = null;
 
-            foreach($content as $node) {
+            foreach ($content as $node) {
                 switch ($node->name) {
                 case 'tbody':
                     $current_tr_tbody = null;
@@ -217,7 +220,6 @@ class HTMLPurifier_ChildDef_Table extends HTMLPurifier_ChildDef
         }
 
         return $ret;
-
     }
 }
 

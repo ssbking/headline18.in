@@ -55,8 +55,11 @@ class Smarty_Internal_Compile_If extends Smarty_Internal_CompileBase
             $assignCompiler = new Smarty_Internal_Compile_Assign();
             if (is_array($parameter[ 'if condition' ][ 'var' ])) {
                 $assignAttr[][ 'var' ] = $parameter[ 'if condition' ][ 'var' ][ 'var' ];
-                $_output .= $assignCompiler->compile($assignAttr, $compiler,
-                                                    array('smarty_internal_index' => $parameter[ 'if condition' ][ 'var' ][ 'smarty_internal_index' ]));
+                $_output .= $assignCompiler->compile(
+                    $assignAttr,
+                    $compiler,
+                    array('smarty_internal_index' => $parameter[ 'if condition' ][ 'var' ][ 'smarty_internal_index' ])
+                );
             } else {
                 $assignAttr[][ 'var' ] = $parameter[ 'if condition' ][ 'var' ];
                 $_output .= $assignCompiler->compile($assignAttr, $compiler, array());
@@ -143,8 +146,11 @@ class Smarty_Internal_Compile_Elseif extends Smarty_Internal_CompileBase
             $assignAttr[][ 'value' ] = $prefixVar;
             if (is_array($parameter[ 'if condition' ][ 'var' ])) {
                 $assignAttr[][ 'var' ] = $parameter[ 'if condition' ][ 'var' ][ 'var' ];
-                $assignCode .= $assignCompiler->compile($assignAttr, $compiler,
-                                                       array('smarty_internal_index' => $parameter[ 'if condition' ][ 'var' ][ 'smarty_internal_index' ]));
+                $assignCode .= $assignCompiler->compile(
+                    $assignAttr,
+                    $compiler,
+                    array('smarty_internal_index' => $parameter[ 'if condition' ][ 'var' ][ 'smarty_internal_index' ])
+                );
             } else {
                 $assignAttr[][ 'var' ] = $parameter[ 'if condition' ][ 'var' ];
                 $assignCode .= $assignCompiler->compile($assignAttr, $compiler, array());

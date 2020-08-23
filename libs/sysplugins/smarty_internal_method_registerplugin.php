@@ -35,8 +35,14 @@ class Smarty_Internal_Method_RegisterPlugin
      * @return \Smarty|\Smarty_Internal_Template
      * @throws SmartyException              when the plugin tag is invalid
      */
-    public function registerPlugin(Smarty_Internal_TemplateBase $obj, $type, $name, $callback, $cacheable = true,
-                                   $cache_attr = null)
+    public function registerPlugin(
+        Smarty_Internal_TemplateBase $obj,
+        $type,
+        $name,
+        $callback,
+        $cacheable = true,
+        $cache_attr = null
+    )
     {
         $smarty = $obj->_getSmartyObj();
         if (isset($smarty->registered_plugins[ $type ][ $name ])) {

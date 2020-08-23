@@ -1,8 +1,8 @@
-<?php if(!defined('CONST_VAL')) {
-die('You cannot access this file directly!');
+<?php if (!defined('CONST_VAL')) {
+    die('You cannot access this file directly!');
 }
-if($editortrue == '1') {
-?>
+if ($editortrue == '1') {
+    ?>
 <script src="scripts/ckeditor/ckeditor.js"></script>
 <script src="scripts/ckeditor/config.js"></script>
 <?php
@@ -67,15 +67,16 @@ if($editortrue == '1') {
 <div id="editor"></div>
 <label><?php echo $lang['230']; ?>&nbsp;&nbsp;<span class="ckarea"><?php echo $lang['231']; ?></span></label>
 <textarea name="longdesc" id="longdesc" class="postarea form-control" rows="9" required="required"></textarea>
-<?php 
-if($editortrue == '1') {
-?>
+<?php
+if ($editortrue == '1') {
+    ?>
 <script>
 CKEDITOR.replace( 'longdesc', {
     customConfig: '<?php echo $sitepath; ?>/scripts/ckeditor/ckeditor_config.js'
 });
 </script>
-<?php } ?>
+<?php
+} ?>
 </div>
 </div>
 <script>
@@ -104,7 +105,7 @@ var fileName = $(this).val();
 $(this).next('.custom-file-label').html(fileName);
 });
 </script>
-<?php if($editortrue == '1') { ?>
+<?php if ($editortrue == '1') { ?>
 <script>
 $("form").submit(function(e) {
 var description = CKEDITOR.instances['longdesc'].getData().replace(/<[^>]*>/gi, '').length;

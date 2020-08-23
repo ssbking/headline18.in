@@ -164,4 +164,3 @@ $lang['300'] = 'There are currently no reviews';
 $lang['301'] = 'admin';
 $lang['302'] = 'Preview Description';
 $lang['303'] = 'Back to Editor';
-?>

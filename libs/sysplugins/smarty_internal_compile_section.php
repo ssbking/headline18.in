@@ -264,8 +264,10 @@ class Smarty_Internal_Compile_Section extends Smarty_Internal_Compile_Private_Fo
                         $start_code[ $i ] = '';
                     }
                     if ($propType[ 'start' ] === 0) {
-                        $start_code = array(max($propValue[ 'step' ] > 0 ? 0 : - 1,
-                                                $propValue[ 'start' ] + $propValue[ 'loop' ]));
+                        $start_code = array(max(
+                            $propValue[ 'step' ] > 0 ? 0 : - 1,
+                            $propValue[ 'start' ] + $propValue[ 'loop' ]
+                        ));
                     }
                 } else {
                     for ($i = 1; $i <= 11; $i ++) {
@@ -273,8 +275,10 @@ class Smarty_Internal_Compile_Section extends Smarty_Internal_Compile_Private_Fo
                     }
                     if ($propType[ 'start' ] === 0) {
                         $start_code =
-                            array(min($propValue[ 'step' ] > 0 ? $propValue[ 'loop' ] : $propValue[ 'loop' ] - 1,
-                                      $propValue[ 'start' ]));
+                            array(min(
+                                $propValue[ 'step' ] > 0 ? $propValue[ 'loop' ] : $propValue[ 'loop' ] - 1,
+                                $propValue[ 'start' ]
+                            ));
                     }
                 }
             }

@@ -39,7 +39,6 @@
  */
 class Smarty_Internal_Extension_Handler
 {
-
     public $objType = null;
 
     /**
@@ -90,17 +89,21 @@ class Smarty_Internal_Extension_Handler
                         if (!isset($this->resolvedProperties[ $match[0] ][ $objType ])) {
                             $property = isset($this->resolvedProperties['property'][ $basename ]) ?
                                 $this->resolvedProperties['property'][ $basename ] :
-                                $property = $this->resolvedProperties['property'][ $basename ] = strtolower(join('_',
-                                                                                                                 preg_split('/([A-Z][^A-Z]*)/',
-                                                                                                                            $basename,
-                                                                                                                            -1,
-                                                                                                                            PREG_SPLIT_NO_EMPTY |
-                                                                                                                            PREG_SPLIT_DELIM_CAPTURE)));
+                                $property = $this->resolvedProperties['property'][ $basename ] = strtolower(join(
+                                    '_',
+                                    preg_split(
+                                                                                                                     '/([A-Z][^A-Z]*)/',
+                                                                                                                     $basename,
+                                                                                                                     -1,
+                                                                                                                     PREG_SPLIT_NO_EMPTY |
+                                                                                                                            PREG_SPLIT_DELIM_CAPTURE
+                                                                                                                 )
+                                ));
 
                             if ($property !== false) {
                                 if (property_exists($data, $property)) {
                                     $propertyType = $this->resolvedProperties[ $match[0] ][ $objType ] = 1;
-                                } else if (property_exists($smarty, $property)) {
+                                } elseif (property_exists($smarty, $property)) {
                                     $propertyType = $this->resolvedProperties[ $match[0] ][ $objType ] = 2;
                                 } else {
                                     $this->resolvedProperties['property'][ $basename ] = $property = false;
@@ -114,7 +117,7 @@ class Smarty_Internal_Extension_Handler
                             $obj = $propertyType === 1 ? $data : $smarty;
                             if ($match[2] === 'get') {
                                 return $obj->$property;
-                            } else if ($match[2] === 'set') {
+                            } elseif ($match[2] === 'set') {
                                 return $obj->$property = $args[0];
                             }
                         }
@@ -192,5 +195,4 @@ class Smarty_Internal_Extension_Handler
     {
         return call_user_func_array(array(new Smarty_Internal_Undefined(), $name), array($this));
     }
-
 }
