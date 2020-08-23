@@ -27,7 +27,7 @@
         </ul>
 <!-- live timer -->
 <!-- change the path to scripots later -->
-<script src="{$sitepath}/themes/{$themes}/assets/js/moment.js"></script>
+<script src="{$sitepath}/themes/{$themes}/styles/moment.js"></script>
 <script>
     var myVar = setInterval(myTimer, 1000);
 

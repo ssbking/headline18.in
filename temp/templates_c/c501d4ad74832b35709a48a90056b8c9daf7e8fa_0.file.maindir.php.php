@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.32, created on 2020-08-22 19:23:24
+/* Smarty version 3.1.32, created on 2020-08-22 21:40:24
   from 'C:\wamp64\www\headline18\themes\world\maindir.php' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.32',
-  'unifunc' => 'content_5f4170aca8bee2_02544559',
+  'unifunc' => 'content_5f4190c85500f5_79366012',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c501d4ad74832b35709a48a90056b8c9daf7e8fa' => 
     array (
       0 => 'C:\\wamp64\\www\\headline18\\themes\\world\\maindir.php',
-      1 => 1598124203,
+      1 => 1598132419,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f4170aca8bee2_02544559 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f4190c85500f5_79366012 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\wamp64\\www\\headline18\\libs\\plugins\\modifier.replace.php','function'=>'smarty_modifier_replace',),));
 ?><!-- top menu -->
 <div class="row">
@@ -59,7 +59,7 @@ $_smarty_tpl->_checkPlugins(array(0=>array('file'=>'C:\\wamp64\\www\\headline18\
 <?php echo '<script'; ?>
  src="<?php echo $_smarty_tpl->tpl_vars['sitepath']->value;?>
 /themes/<?php echo $_smarty_tpl->tpl_vars['themes']->value;?>
-/assets/js/moment.js"><?php echo '</script'; ?>
+/styles/moment.js"><?php echo '</script'; ?>
 >
 <?php echo '<script'; ?>
 >
